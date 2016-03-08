@@ -81,7 +81,6 @@ int main(int argc, char * argv[])//for ide: from main to main4
 
     config.data_type = 0;
     config.search_type = 1;
-    config.max_data_size =400 ;
 
     config.num_of_queries = 10;
 

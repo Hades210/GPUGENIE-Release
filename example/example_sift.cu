@@ -97,11 +97,9 @@ int main(int argc, char * argv[])
 	config.posting_list_max_length = 256;
 	config.use_load_balance = true;
 	config.use_multirange = true;
-    config.save_to_gpu = false;
     //below are new configurations
     config.data_type = 0;
     config.search_type = 0;
-    config.max_data_size = 0;
 
 	read_file(data, dataFile.c_str(), -1);//for AT: for adaptiveThreshold
 	if(config.use_multirange)

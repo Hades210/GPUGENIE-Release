@@ -100,7 +100,6 @@ int main(int argc, char * argv[])
     //below are new configurations
     config.data_type = 1;
     config.search_type = 0;
-    config.max_data_size = 500;
 
     read_file(dataFile.c_str(), &config.data, config.item_num, &config.index, config.row_num);
 	if(config.use_multirange)

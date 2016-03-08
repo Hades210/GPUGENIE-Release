@@ -39,17 +39,11 @@ void GPUGenie::inv_table::clear()
 
 GPUGenie::inv_table::~inv_table()
 {
-	if (is_stored_in_gpu == true)
-		cudaCheckErrors(cudaFree(d_inv_p));
 }
 
 void GPUGenie::inv_table::clear_gpu_mem()
 {
-	if (is_stored_in_gpu == false)
-		return;
 	cudaFree(d_inv_p);
-	is_stored_in_gpu = false;
-
 }
 
 bool GPUGenie::inv_table::empty()

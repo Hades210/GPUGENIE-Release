@@ -47,7 +47,6 @@ int main(int argc, char* argv[])
 
     config.data_type = 0;
     config.search_type = 0;
-    config.max_data_size = 0;
 
     config.num_of_queries = 3;
 

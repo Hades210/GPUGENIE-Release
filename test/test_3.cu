@@ -1,6 +1,6 @@
-/** Name: test_3.cc
+/** Name: test_5.cu
  * Description:
- * focus on multi-load
+ * focus on save_to_gpu function
  *   sift data
  *   data is from csv file
  *   query is from csv file, single range
@@ -47,22 +47,15 @@ int main(int argc, char* argv[])
 
     config.data_type = 0;
     config.search_type = 0;
-    config.max_data_size = 10;
-
     config.num_of_queries = 3;
+
 
     read_file(data, dataFile.c_str(), -1);
     read_file(queries, queryFile.c_str(), config.num_of_queries);
 
     preprocess_for_knn_csv(config, table);
 
-
-    
-
     /**test for table*/
-    
-    assert(table_num == 2);
-    
     vector<int>& inv = *table[0].inv();
     assert(inv[0] == 8);
     assert(inv[1] == 9);
@@ -87,6 +80,7 @@ int main(int argc, char* argv[])
     
     assert(result[10] == 2);
     assert(result_count[10] == 5);
+
     delete[] table;
     return 0;
 }

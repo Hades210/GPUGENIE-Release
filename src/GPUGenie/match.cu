@@ -878,8 +878,7 @@ void GPUGenie::match(inv_table& table, vector<query>& queries,
 		device_vector<query::dim> d_dims(dims);
 		query::dim* d_dims_p = raw_pointer_cast(d_dims.data());
 
-		if (!table.is_stored_in_gpu)
-			table.cpy_data_to_gpu();
+		table.cpy_data_to_gpu();
 
 		if (bitmap_size)
 		{
@@ -950,10 +949,8 @@ void GPUGenie::match(inv_table& table, vector<query>& queries,
                     num_of_max_count,//number of maximum count per query
                     d_noiih_p,
                     d_overflow);
-            if(!table.is_stored_in_gpu)
-            {
-                table.clear_gpu_mem();
-            }
+            
+            table.clear_gpu_mem();
 			cudaCheckErrors(cudaDeviceSynchronize());
 			cudaCheckErrors(cudaMemcpy(h_overflow, d_overflow, sizeof(bool), cudaMemcpyDeviceToHost));
 

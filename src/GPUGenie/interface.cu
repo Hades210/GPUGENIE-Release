@@ -31,269 +31,59 @@ using namespace GPUGenie;
 using namespace std;
 
 
-//merge result
-void merge_knn_results_from_multiload(std::vector<std::vector<int> >& _result,
-		std::vector<std::vector<int> >& _result_count, std::vector<int>& result,
-		std::vector<int>& result_count, int table_num, int topk, int query_num)
-{
-	for (int i = 0; i < query_num; ++i)
-	{
-		vector<int> _sort;
-		vector<int> _sort_count;
-		for (int j = 0; j < table_num; ++j)
-		{
-			_sort.insert(_sort.end(), _result[j].begin() + i * topk,
-					_result[j].begin() + (i + 1) * topk);
-			_sort_count.insert(_sort_count.end(),
-					_result_count[j].begin() + i * topk,
-					_result_count[j].begin() + (i + 1) * topk);
-		}
-
-		for (int j = 0; j < topk; ++j)
-		{
-			if (_sort_count.begin() == _sort_count.end())
-			{
-				throw GPUGenie::cpu_runtime_error("No result!");
-			}
-			unsigned int index;
-			index = std::distance(_sort_count.begin(),
-					std::max_element(_sort_count.begin(), _sort_count.end()));
-
-			result.push_back(_sort[index]);
-			result_count.push_back(_sort_count[index]);
-			_sort.erase(_sort.begin() + index);
-			_sort_count.erase(_sort_count.begin() + index);
-
-		}
-	}
-}
 bool GPUGenie::preprocess_for_knn_csv(GPUGenie_Config& config,
 		inv_table * &_table)
 {
-	unsigned int cycle = 0;
 
-	if (config.max_data_size >= config.data_points->size() || config.max_data_size <= 0)
-	{
-		if (config.data_points->size() > 0)
-		{
-            _table = new inv_table[1];
-            _table[0].set_table_index(0);
-            _table[0].set_total_num_of_table(1);
-			Logger::log(Logger::DEBUG, "build from data_points...");
-			switch (config.search_type)
-			{
-			case 0:
-				load_table(_table[0], *(config.data_points), config);
-				break;
-			case 1:
-				load_table_bijectMap(_table[0], *(config.data_points), config);
-				break;
-			default:
-				throw GPUGenie::cpu_runtime_error("Unrecognised search type!");
-			}
-		}
-		else
-		{
-			throw GPUGenie::cpu_runtime_error("no data input!");
-		}
-	}
-	else
-	{
-		Logger::log(Logger::DEBUG, "build from data_points...");
-        unsigned int table_num;
-		if (config.data_points->size() % config.max_data_size == 0)
-		{
-			table_num = config.data_points->size() / config.max_data_size;
-			cycle = table_num;
-		}
-		else
-		{
-			table_num = config.data_points->size() / config.max_data_size + 1;
-			cycle = table_num - 2;
-		}
-
-		_table = new inv_table[table_num];
-
-		for (unsigned int i = 0; i < cycle; ++i)
-		{
-			vector<vector<int> > temp;
-			temp.insert(temp.end(),
-					config.data_points->begin() + i * config.max_data_size,
-					config.data_points->begin()
-							+ (i + 1) * config.max_data_size);
-
-            _table[i].set_table_index(i);
-            _table[i].set_total_num_of_table(table_num);
-			switch (config.search_type)
-			{
-			case 0:
-				load_table(_table[i], temp, config);
-				break;
-			case 1:
-				load_table_bijectMap(_table[i], temp, config);
-				break;
-			default:
-				throw GPUGenie::cpu_runtime_error("Unrecognised search type!");
-			}
-		}
-		if (table_num != cycle)
-		{
-			vector<vector<int> > temp1;
-			vector<vector<int> > temp2;
-			unsigned int second_last_size = (config.data_points->size()
-					- cycle * config.max_data_size) / 2;
-			temp1.insert(temp1.end(),
-					config.data_points->begin() + cycle * config.max_data_size,
-					config.data_points->begin() + cycle * config.max_data_size
-							+ second_last_size);
-			temp2.insert(temp2.end(),
-					config.data_points->begin() + cycle * config.max_data_size
-							+ second_last_size, config.data_points->end());
-
-            _table[cycle].set_table_index(cycle);
-            _table[cycle].set_total_num_of_table(table_num);
-            _table[cycle + 1].set_table_index(cycle+1);
-            _table[cycle + 1].set_total_num_of_table(table_num);
-			switch (config.search_type)
-			{
-			case 0:
-				load_table(_table[cycle], temp1, config);
-				load_table(_table[cycle + 1], temp2, config);
-				break;
-			case 1:
-				load_table_bijectMap(_table[cycle], temp1, config);
-				load_table_bijectMap(_table[cycle + 1], temp2, config);
-				break;
-			default:
-				throw GPUGenie::cpu_runtime_error("Unrecognised search type!");
-			}
-		}
-	}
+    if (config.data_points->size() > 0)
+    {
+        _table = new inv_table[1];
+        _table[0].set_table_index(0);
+        _table[0].set_total_num_of_table(1);
+        Logger::log(Logger::DEBUG, "build from data_points...");
+        switch (config.search_type)
+        {
+        case 0:
+            load_table(_table[0], *(config.data_points), config);
+            break;
+        case 1:
+            load_table_bijectMap(_table[0], *(config.data_points), config);
+            break;
+        default:
+            throw GPUGenie::cpu_runtime_error("Unrecognised search type!");
+        }
+    }
+    else
+    {
+        throw GPUGenie::cpu_runtime_error("no data input!");
+    }
 	return true;
 }
 
-bool GPUGenie::preprocess_for_knn_binary(GPUGenie_Config& config,
-		inv_table * &_table)
+bool GPUGenie::preprocess_for_knn_binary(GPUGenie_Config& config, inv_table * &_table)
 {
-	unsigned int cycle = 0;
-	if (config.max_data_size >= config.row_num || config.max_data_size <= 0)
-	{
-		if (config.item_num != 0 && config.index != NULL && config.item_num != 0 && config.row_num != 0)
-		{
-            _table = new inv_table[1];
-            _table[0].set_table_index(0);
-            _table[0].set_total_num_of_table(1);
-			Logger::log(Logger::DEBUG, "build from data array...");
-			switch (config.search_type)
-			{
-			case 0:
-				load_table(_table[0], config.data, config.item_num, config.index,
-						config.row_num, config);
-				break;
-			case 1:
-				load_table_bijectMap(_table[0], config.data, config.item_num,
-						config.index, config.row_num, config);
-				break;
-			}
-		}
-		else
-		{
-			throw GPUGenie::cpu_runtime_error("no data input!");
-		}
-	}
-	else
-	{
-		Logger::log(Logger::DEBUG, "build from data array...");
-        unsigned int table_num;
-		if (config.row_num % config.max_data_size == 0)
-		{
-			table_num = config.row_num / config.max_data_size;
-			cycle = table_num;
-		}
-		else
-		{
-			table_num = config.row_num / config.max_data_size + 1;
-			cycle = table_num - 2;
-		}
-
-		_table = new inv_table[table_num];
-		for (unsigned int i = 0; i < cycle; ++i)
-		{
-			unsigned int item_num = 0;
-			item_num = config.index[(i + 1) * config.max_data_size]
-					- config.index[i * config.max_data_size];
-			if (i == table_num - 1)
-				item_num = config.item_num
-						- config.index[config.max_data_size * (table_num - 1)];
-            _table[i].set_table_index(i);
-            _table[i].set_total_num_of_table(table_num);
-			switch (config.search_type)
-			{
-			case 0:
-				load_table(_table[i],
-						config.data + config.index[config.max_data_size * i],
-						item_num, config.index + config.max_data_size * i,
-						config.max_data_size, config);
-				break;
-			case 1:
-				load_table_bijectMap(_table[i],
-						config.data + config.index[config.max_data_size * i],
-						item_num, config.index + config.max_data_size * i,
-						config.max_data_size, config);
-				break;
-			}
-		}
-
-		if (table_num != cycle)
-		{
-			unsigned int second_last_row_size = (config.row_num
-					- cycle * config.max_data_size) / 2;
-			unsigned int last_row_size = config.row_num - second_last_row_size
-					- cycle * config.max_data_size;
-			unsigned int second_last_item_size =
-					config.index[config.max_data_size * cycle
-							+ second_last_row_size]
-							- config.index[config.max_data_size * cycle];
-			unsigned int last_item_size = config.item_num
-					- config.index[config.max_data_size * cycle
-							+ second_last_row_size];
-            _table[cycle].set_table_index(cycle);
-            _table[cycle].set_total_num_of_table(table_num);
-            _table[cycle + 1].set_table_index(cycle+1);
-            _table[cycle + 1].set_total_num_of_table(table_num);
-			switch (config.search_type)
-			{
-			case 0:
-				load_table(_table[cycle],
-						config.data
-								+ config.index[config.max_data_size * cycle],
-						second_last_item_size,
-						config.index + config.max_data_size * cycle,
-						second_last_row_size, config);
-				load_table(_table[cycle + 1],
-						config.data
-								+ config.index[config.max_data_size * cycle
-										+ second_last_row_size], last_item_size,
-						config.index + config.max_data_size * cycle
-								+ second_last_row_size, last_row_size, config);
-				break;
-			case 1:
-				load_table_bijectMap(_table[cycle],
-						config.data
-								+ config.index[config.max_data_size * cycle],
-						second_last_item_size,
-						config.index + config.max_data_size * cycle,
-						second_last_row_size, config);
-				load_table_bijectMap(_table[cycle + 1],
-						config.data
-								+ config.index[config.max_data_size * cycle
-										+ second_last_row_size], last_item_size,
-						config.index + config.max_data_size * cycle
-								+ second_last_row_size, last_row_size, config);
-				break;
-			}
-		}
-	}
+    if (config.item_num != 0 && config.index != NULL && config.item_num != 0 && config.row_num != 0)
+    {
+        _table = new inv_table[1];
+        _table[0].set_table_index(0);
+        _table[0].set_total_num_of_table(1);
+        Logger::log(Logger::DEBUG, "build from data array...");
+        switch (config.search_type)
+        {
+        case 0:
+            load_table(_table[0], config.data, config.item_num, config.index,
+                    config.row_num, config);
+            break;
+        case 1:
+            load_table_bijectMap(_table[0], config.data, config.item_num,
+                    config.index, config.row_num, config);
+            break;
+        }
+    }
+    else
+    {
+        throw GPUGenie::cpu_runtime_error("no data input!");
+    }
 	return true;
 }
 
@@ -301,32 +91,11 @@ void GPUGenie::knn_search_after_preprocess(GPUGenie_Config& config,
 		inv_table * &_table, std::vector<int>& result,
 		std::vector<int>& result_count)
 {
-    std::vector<query> queries;
-    vector<vector<int> > _result;
-    vector<vector<int> > _result_count;
-    unsigned int table_num = _table[0].get_total_num_of_table();
-    _result.resize(table_num);
-    _result_count.resize(table_num);
+    vector<query> queries;
+    queries.clear();
+    load_query(_table[0], queries, config);
 
-    unsigned int accumulate_num = 0;
-    for (unsigned int i = 0; i < table_num; ++i)
-    {
-        queries.clear();
-        load_query(_table[i], queries, config);
-
-        knn_search(_table[i], queries, _result[i], _result_count[i],config);
-
-        if (i <= 0) continue;
-        accumulate_num += _table[i - 1].i_size();
-        for (unsigned int j = 0; j < _result[i].size(); ++j)
-        {
-            _result[i][j] += accumulate_num;
-        }
-    }
-
-    merge_knn_results_from_multiload(_result, _result_count, result,
-            result_count, table_num, config.num_of_topk, queries.size());
-
+    knn_search(_table[0], queries, result, result_count,config);
 
 }
 void GPUGenie::load_table(inv_table& table,
@@ -352,10 +121,6 @@ void GPUGenie::load_table(inv_table& table,
 	}
 
 	table.build(config.posting_list_max_length, config.use_load_balance);
-
-	if (config.save_to_gpu)
-		table.cpy_data_to_gpu();
-	table.is_stored_in_gpu = config.save_to_gpu;
 
 	u64 endtime = getTime();
 	double timeInterval = getInterval(starttime, endtime);
@@ -400,10 +165,6 @@ void GPUGenie::load_table(inv_table& table, int *data, unsigned int item_num,
 	}
 
 	table.build(config.posting_list_max_length, config.use_load_balance);
-
-	if (config.save_to_gpu)
-		table.cpy_data_to_gpu();
-	table.is_stored_in_gpu = config.save_to_gpu;
 
 	u64 endtime = getTime();
 	double timeInterval = getInterval(starttime, endtime);
@@ -543,9 +304,6 @@ void GPUGenie::load_table_bijectMap(inv_table& table,
 	table.append(list);
 	table.build(config.posting_list_max_length, config.use_load_balance);
 
-	if (config.save_to_gpu)
-		table.cpy_data_to_gpu();
-	table.is_stored_in_gpu = config.save_to_gpu;
 
 	u64 endtime = getTime();
 	double timeInterval = getInterval(starttime, endtime);
@@ -571,9 +329,6 @@ void GPUGenie::load_table_bijectMap(inv_table& table, int *data,
 	table.append(list);
 	table.build(config.posting_list_max_length, config.use_load_balance);
 
-	if (config.save_to_gpu)
-		table.cpy_data_to_gpu();
-	table.is_stored_in_gpu = config.save_to_gpu;
 
 	u64 endtime = getTime();
 	double timeInterval = getInterval(starttime, endtime);

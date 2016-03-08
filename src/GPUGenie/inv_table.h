@@ -49,14 +49,6 @@ public:
      */
 	int *d_inv_p;
 
-    /*! \var bool is_stored_in_gpu
-     *  \brief is_stored_in_gpu tell whether inverted index structure is pre-stored inside gpu memory
-     *
-     *  If true, data is pre-stored inside gpu so that you can launch queries multiple times. only need to
-     *  transfer data to device once. If false, you have to transfer data to device every time you launch a query.
-     *  (Here, one query means one execution of search)
-     */
-	bool is_stored_in_gpu;
 private:
 
     /*! \var int table_index
@@ -153,7 +145,7 @@ public:
      *  It sets is_store_in_gpu to false, _shifter 16,
      *  _size -1, table_index 0, total_num_of_table 1 and _dim_size 0.
 	 */
-	inv_table(): d_inv_p(NULL), is_stored_in_gpu(false),
+	inv_table(): d_inv_p(NULL),
                 table_index(0),total_num_of_table(1),
                 _build_status(not_builded), _shifter(16),_size(-1),_dim_size(0)
 	{

@@ -79,8 +79,6 @@ typedef struct _GPUGenie_Config
 
 	int search_type; /*!< 0 for sift-like data search, 1 for short text data search */
 	int data_type; /*!< 0 for csv data; 1 for binary data */
-	unsigned int max_data_size; /*!< the max number of data items(rows of data), used for multiload feature */
-	bool save_to_gpu; /*!< true for transferring data to gpu and keeping in gpu memory */
 
 	std::vector<std::vector<int> > * query_points;/*!< query set, for non-multirange query */
 	std::vector<attr_t> * multirange_query_points;/*!< query set, for multirange query */
@@ -99,7 +97,7 @@ typedef struct _GPUGenie_Config
 
 			data(NULL), index(NULL), item_num(0), row_num(0),
 
-			search_type(0), data_type(0), max_data_size(0), save_to_gpu(false),
+			search_type(0), data_type(0),
 
 			query_points(NULL), multirange_query_points(NULL), dim(0), use_adaptive_range(
 					GPUGENIE_DEFAULT_USE_ADAPTIVE_RANGE), selectivity(
@@ -120,8 +118,7 @@ typedef struct _GPUGenie_Config
  *  \param _table Pointer to inv_table object array, which can be managed by users
  *
  *  This function includes the process of transferring a data set read from a csv file to
- *  an inv_table, if user turn on multiload feature , the second parameter will point to an
- *  array of inv_table objects. The inv_table objects contain all the information about
+ *  an inv_table. The inv_table objects contain all the information about
  *  corresponding inverted index structure for given data set
  *
  *  \return true only when no error occurs
@@ -135,8 +132,7 @@ bool preprocess_for_knn_csv(GPUGenie_Config& config, inv_table * &_table);
  *  \param _table Pointer to inv_table object array, which can be managed by users
  *
  *  This function includes the process of transferring a data set read from a binary file to
- *  an inv_table, if user turn on multiload feature , the second parameter will point to an
- *  array of inv_table objects. The inv_table objects contain all the information about
+ *  an inv_table. The inv_table objects contain all the information about
  *  corresponding inverted index structure for given data set
  *
  *  \return true only when no error occurs
@@ -153,7 +149,6 @@ bool preprocess_for_knn_binary(GPUGenie_Config& config, inv_table * &_table);
  *  \param result_count Corresponding to result vector. It stores the count number for each result point
  *
  *  This function handle the rest procedure after preprocess finishes,
- *  Multiload is also handled in this function. The results need to be merged in multiload situation
  */
 void knn_search_after_preprocess(GPUGenie_Config& config, inv_table * &_table, vector<int>& result, vector<int>& result_count);
 
