@@ -1,4 +1,4 @@
-/** Name: test_1.cu
+/** Name: test_2.cu
  * Description:
  *   basic test
  *   binary data

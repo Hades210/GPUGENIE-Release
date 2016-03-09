@@ -7,9 +7,11 @@
 #include <string.h>
 #include <sys/time.h>
 #include <ctime>
-
+#include <sstream>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include "Timing.h"
-
+using namespace std;
 const char * const Logger::LEVEL_NAMES[] =
 { "NONE   ", "ALERT  ", "INFO   ", "VERBOSE", "DEBUG  " };
 
@@ -21,7 +23,12 @@ Logger::Logger(int level)
 	std::string s = currentDateTime();
 	char fout_name[128];
 	sprintf(fout_name, "GPUGENIE_LOG-%s.log", s.c_str());
-	strcpy(logfile_name, fout_name);
+    stringstream ss;
+    ss<<"log/"<<string(fout_name);
+    struct stat st;
+    if(stat("log", &st) == -1)
+        mkdir("log", 0700);
+	strcpy(logfile_name, ss.str().c_str());
 	logfile = fopen(logfile_name, "a");
 }
 

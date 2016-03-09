@@ -1,4 +1,4 @@
-/** Name: test_7.cu
+/** Name: test_5.cu
  * Description:
  *   tweet data(short text)
  *   data is from csv file

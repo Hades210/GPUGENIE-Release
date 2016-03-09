@@ -1,6 +1,6 @@
-/** Name: test_6.cu
+/** Name: test_4.cu
  * Description:
- * focus on serialization of table, especially under multiload setting
+ * focus on serialization of table 
  *   sift data
  *   data is from csv file
  *   query is from csv file, single range
