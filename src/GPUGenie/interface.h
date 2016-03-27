@@ -304,9 +304,6 @@ void load_table_bijectMap(inv_table& table, int *data, unsigned int item_num,
 
 void reset_device();
 
-
-
-
 }
 
 #endif /* INTERFACE_H_ */

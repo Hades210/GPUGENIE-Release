@@ -4,7 +4,6 @@
 typedef unsigned int u32;
 typedef unsigned long long u64;
 
-//for ide: to revert it as system file later, change <> to ""
 #include <GPUGenie/inv_list.h>
 #include <GPUGenie/inv_table.h>
 #include <GPUGenie/query.h>

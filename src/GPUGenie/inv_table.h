@@ -432,11 +432,6 @@ public:
     bool
     read_from_file(ifstream& ifs);
 
-
-
-
-
-
 };
 }
 
