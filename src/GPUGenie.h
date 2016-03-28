@@ -4,6 +4,7 @@
 typedef unsigned int u32;
 typedef unsigned long long u64;
 
+<<<<<<< HEAD
 #define THREADS_PER_BLOCK 256
 
 #define GPUGenie_Minus_One_THREADS_PER_BLOCK 1024
@@ -18,6 +19,8 @@ typedef unsigned long long u64;
 
 #define GPUGenie_device_THREADS_PER_BLOCK 256
 //for ide: to revert it as system file later, change <> to ""
+=======
+>>>>>>> 349a5229bc8c1b5fba1f597bb9c0d79a30dfcc3a
 #include <GPUGenie/inv_list.h>
 #include <GPUGenie/inv_table.h>
 #include <GPUGenie/query.h>

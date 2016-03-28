@@ -42,7 +42,6 @@ public:
 	static const char * const LEVEL_NAMES[];
 
 
-
     /*! \fn virtual ~Logger()
      *  \brief Destructor.
      *

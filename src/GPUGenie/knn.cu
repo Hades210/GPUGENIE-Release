@@ -87,6 +87,7 @@ void GPUGenie::knn(GPUGenie::inv_table& table, vector<GPUGenie::query>& queries,
 	Logger::log(Logger::INFO, "Start topk....");
 	u64 start = getTime();
 
+<<<<<<< HEAD
     
     int max_topk=0;
     for(unsigned int k = 0 ; k<queries.size() ; ++k)
@@ -94,6 +95,8 @@ void GPUGenie::knn(GPUGenie::inv_table& table, vector<GPUGenie::query>& queries,
         if(max_topk<queries[k].topk())
             max_topk = queries[k].topk();
     }
+=======
+>>>>>>> 349a5229bc8c1b5fba1f597bb9c0d79a30dfcc3a
 
 	thrust::device_vector<data_t> d_topk;
 	heap_count_topk(d_data, d_topk, d_threshold, d_passCount,
@@ -104,7 +107,6 @@ void GPUGenie::knn(GPUGenie::inv_table& table, vector<GPUGenie::query>& queries,
 	Logger::log(Logger::VERBOSE, ">>>>> main topk takes %fms <<<<<",
 			getInterval(start, end));
 	start = getTime();
-
 
 	d_top_count.resize(d_topk.size());
 	d_top_indexes.resize(d_topk.size());
