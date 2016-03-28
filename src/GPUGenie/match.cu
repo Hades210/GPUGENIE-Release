@@ -16,12 +16,9 @@
 #include "genie_errors.h"
 
 #include "match.h"
+#include "../GPUGenie.h"
 
 
-
-#ifndef GPUGenie_device_THREADS_PER_BLOCK
-#define GPUGenie_device_THREADS_PER_BLOCK 256
-#endif
 
 #define OFFSETS_TABLE_16 {0u, 		3949349u, 8984219u, 9805709u,\
 						  7732727u, 1046459u, 9883879u, 4889399u,\
