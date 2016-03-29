@@ -4,6 +4,7 @@ GPUGenie is a Generic Inverted Index on the GPU. It builds the database from a c
 
 ```
 Generic Inverted Index on the GPU, Technical Report (TR 11/15), School of Computing, NUS. 
+Generic Inverted Index on the GPU, CoRR arXiv:1603.08390 at www.comp.nus.edu.sg/~atung/publication/gpugenie.pdf
 ```
 
 
