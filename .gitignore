@@ -52,5 +52,4 @@ src/Makefile
 Makefile
 
 #Doxygen files
-doc/html
 Doxyfile

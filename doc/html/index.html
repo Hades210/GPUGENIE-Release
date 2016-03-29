@@ -81,7 +81,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="intro_sec"></a>
 Introduction</h1>
-<p>Data variety, as one of the three Vs of the Big Data, is manifested by a growing number of complex data types such as documents, sequences, trees, and high dimensional vectors. To perform similarity search on these data, existing works mainly choose to create customized indexes for different data types. Due to the diversity of customized indexes, it is hard to devise a general parallelization strategy to speed up the search. In this library, we propose a generic inverted index on the GPU(called Genie), which can support similarity search of multiple queries on various data types. Genie can effectively support the approximate nearest neighbor search in different similarity measures through exerting Locality Sensitive Hashing schemes, as well as similarity search on original data such as short document data and relational data. Extensive experiments on different real-life datasets demonstrates the efficiency and effectiveness of our system. </p>
+<p>Data variety, as one of the three Vs of the Big Data, is manifested by a growing number of complex data types such as documents, sequences, trees, and high dimensional vectors. To perform similarity search on these data, existing works mainly choose to create customized indexes for different data types. Due to the diversity of customized indexes, it is hard to devise a general parallelization strategy to speed up the search. In this library, we propose a generic inverted index on the GPU(called Genie), which can support similarity search of multiple queries on various data types. Genie can effectively support the approximate nearest neighbor search in different similarity measures through exerting Locality Sensitive Hashing schemes, as well as similarity search on original data such as short document data and relational data. Extensive experiments on different real-life datasets demonstrates the efficiency and effectiveness of our system.</p>
+<h1><a class="anchor" id="run_sec"></a>
+To compile and run</h1>
+<ol type="1">
+<li>cd <a class="el" href="namespaceGPUGenie.html" title="GPUGenie is the top namespace for the project. ">GPUGenie</a></li>
+<li>cmake .</li>
+<li>make</li>
+<li>make test(alternative)</li>
+</ol>
+<p>You can also 'cd example &amp;&amp; make ', so that you can run the example codes. Actually the code in test folder can also be used as good examples. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

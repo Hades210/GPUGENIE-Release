@@ -11,14 +11,15 @@ Generic Inverted Index on the GPU, Technical Report (TR 11/15), School of Comput
 
 You are required to install gcc, g++, nvcc and cmake. Please make sure that the cmake version is greater tha nversion 2.8 and cuda 7.
 
-To compile the program, just type 
+To compile the program:
 
 ```
+cmake .
 make
+
 ```
 
-The library will be generated within the folder "build"
-
+You can run 'make test' to check whether the library has been built.
 After compiling, you can go to folder "example", and type "make". Some running examples will be compiled fnd generated for testing.
 
 To generate the documents of the project, just type
