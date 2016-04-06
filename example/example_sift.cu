@@ -49,7 +49,7 @@ int main(int argc, char * argv[])
 	//It is implemented as a bitmap filter.
 	//Set to 0 to disable the feature.
 	//set to <0, to use adaptiveThreshold, the absolute value of count_threshold is the maximum possible count sotred in the bitmap
-	config.count_threshold = -128;
+	config.count_threshold = -config.dim;
 
 	//Number of topk items to select for each query.
 	config.num_of_topk = 10;
@@ -62,8 +62,8 @@ int main(int argc, char * argv[])
 	//if config.hashtable_size>2, the hashtable_size means the size of the hashtable,
 		//this is useful when using adaptiveThreshold (i.e. config.count_threshold <0), where the
 		//hash_table size is usually set as: maximum_countXconfig.num_of_topkx1.5 (where 1.5 is load factor for hashtable).
-	//config.hashtable_size = 128*config.num_of_topk*1.5;//960
-    config.hashtable_size = 128*config.num_of_topk*1.5;//354
+
+    config.hashtable_size = config.dim*config.num_of_topk*1.5;//354
 
 
 
