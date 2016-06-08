@@ -3,14 +3,13 @@ GPUGenie
 GPUGenie is a Generic Inverted Index on the GPU. It builds the database from a csv file or a vector of instances. Then GPUGenie will consturct the inverted list table and transfer it to the device. GPUGenie provides a simple way to perform the similarity queries. User may define queries and their matching ranges, then directly call the matching funtion. The library will parallel process all queries and save the matching result into a device_vector. A top k search can also be simply perfromed. GPUGenie uses parallel searching to determine the top k values in a vector. It is much faster than the CPU searching algorithm. All device methods are wrapped in host methods. Developers are not required to configure the device function call. Please refer to the following document:
 
 ```
-Generic Inverted Index on the GPU, Technical Report (TR 11/15), School of Computing, NUS. 
-Generic Inverted Index on the GPU, CoRR arXiv:1603.08390 at www.comp.nus.edu.sg/~atung/publication/gpugenie.pdf
+A Generic Inverted Index Framework for Similarity Search on the GPU, (TR 11/15), School of Computing, NUS, at http://www.comp.nus.edu.sg/~atung/gl/geniegputr16.pdf
 ```
 
 
 ### Compiler and development
 
-You are required to install gcc, g++, nvcc and cmake. Please make sure that the cmake version is greater tha nversion 2.8 and cuda 7.
+You are required to install gcc, g++, nvcc and cmake. Please make sure that the cmake version is greater tha nversion 2.8 and nvcc version is greater than cuda 7.
 
 To compile the program:
 
