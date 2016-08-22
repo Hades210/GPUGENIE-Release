@@ -2,7 +2,7 @@ var searchData=
 [
   ['i_5fsize',['i_size',['../classGPUGenie_1_1inv__table.html#a5161b01d00562f792eb02ae6c0e3d97f',1,'GPUGenie::inv_table']]],
   ['id',['id',['../structdata__.html#a8983bffa6ef78a089de036b1c5753e1a',1,'data_']]],
-  ['index',['index',['../structGPUGenie_1_1__GPUGenie__Config.html#a1c3420e272eb396cb5911e2bed840457',1,'GPUGenie::_GPUGenie_Config::index()'],['../classGPUGenie_1_1inv__list.html#a18fb1ce06ef10611d85992d71c0d5862',1,'GPUGenie::inv_list::index()'],['../classGPUGenie_1_1query.html#a44ac7cb0e956953cb9732b6cc116defb',1,'GPUGenie::query::index()'],['../index.html',1,'(Global Namespace)']]],
+  ['index',['index',['../structGPUGenie_1_1__GPUGenie__Config.html#a1c3420e272eb396cb5911e2bed840457',1,'GPUGenie::_GPUGenie_Config::index()'],['../classGPUGenie_1_1inv__list.html#a18fb1ce06ef10611d85992d71c0d5862',1,'GPUGenie::inv_list::index()'],['../classGPUGenie_1_1query.html#a44ac7cb0e956953cb9732b6cc116defb',1,'GPUGenie::query::index()']]],
   ['info',['INFO',['../classLogger.html#a13ad8458bac95a849b4129cb52931a7b',1,'Logger']]],
   ['interface_2ecu',['interface.cu',['../interface_8cu.html',1,'']]],
   ['interface_2eh',['interface.h',['../interface_8h.html',1,'']]],
@@ -10,7 +10,7 @@ var searchData=
   ['inv_5findex',['inv_index',['../classGPUGenie_1_1inv__table.html#a6ed01b0386108ae35c0b83a4faff114a',1,'GPUGenie::inv_table']]],
   ['inv_5flist',['inv_list',['../classGPUGenie_1_1inv__list.html',1,'GPUGenie']]],
   ['inv_5flist',['inv_list',['../classGPUGenie_1_1inv__list.html#aaca1ed3aa0f3c19e7b95ed0b19e3614f',1,'GPUGenie::inv_list::inv_list()'],['../classGPUGenie_1_1inv__list.html#a71ac0123f719eeaea8268ad6362a55ca',1,'GPUGenie::inv_list::inv_list(vector&lt; int &gt; &amp;vin)'],['../classGPUGenie_1_1inv__list.html#ac6f8633c4379cfdd59f929bd71c2d064',1,'GPUGenie::inv_list::inv_list(vector&lt; int &gt; *vin)'],['../classGPUGenie_1_1inv__list.html#a012d16504362f655fa95d5e0d2887f60',1,'GPUGenie::inv_list::inv_list(vector&lt; string &gt; &amp;vin)'],['../classGPUGenie_1_1inv__list.html#aa03d6f39248abaaa9d602bbd31a6b00e',1,'GPUGenie::inv_list::inv_list(vector&lt; string &gt; *vin)']]],
-  ['inv_5flist_2ecc',['inv_list.cc',['../inv__list_8cc.html',1,'']]],
+  ['inv_5flist_2ecu',['inv_list.cu',['../inv__list_8cu.html',1,'']]],
   ['inv_5flist_2eh',['inv_list.h',['../inv__list_8h.html',1,'']]],
   ['inv_5flists',['inv_lists',['../classGPUGenie_1_1inv__table.html#ae50022b4adba553fcb023f81d85c3431',1,'GPUGenie::inv_table']]],
   ['inv_5fpos',['inv_pos',['../classGPUGenie_1_1inv__table.html#ab33975c4ab51ac64299e0a99cdf60b14',1,'GPUGenie::inv_table']]],
@@ -20,6 +20,9 @@ var searchData=
   ['inv_5ftable_2eh',['inv_table.h',['../inv__table_8h.html',1,'']]],
   ['invert',['invert',['../classGPUGenie_1_1inv__list.html#aaf102d45333bce3e429270b31dec1b7a',1,'GPUGenie::inv_list::invert(vector&lt; int &gt; &amp;vin)'],['../classGPUGenie_1_1inv__list.html#a22d4990be1ec0c07dc5efefee6f6d2a0',1,'GPUGenie::inv_list::invert(vector&lt; int &gt; *vin)'],['../classGPUGenie_1_1inv__list.html#a70d9885e2b9533fa4e5bb788eb5f4637',1,'GPUGenie::inv_list::invert(vector&lt; string &gt; &amp;vin)'],['../classGPUGenie_1_1inv__list.html#a7b5fd47d5fbc5b5d64dcc3834db9e39a',1,'GPUGenie::inv_list::invert(vector&lt; string &gt; *vin)'],['../classGPUGenie_1_1inv__list.html#a3304661135a1161432453084b97672c9',1,'GPUGenie::inv_list::invert(vector&lt; string &gt; &amp;vin, int(*stoi)(string &amp;))'],['../classGPUGenie_1_1inv__list.html#a01f1829ea2d6c831c3edd20f2a2e5b93',1,'GPUGenie::inv_list::invert(vector&lt; string &gt; *vin, int(*stoi)(string &amp;))']]],
   ['invert_5fbijectmap',['invert_bijectMap',['../classGPUGenie_1_1inv__list.html#a925f46be13936429f0cbba23dc51495d',1,'GPUGenie::inv_list::invert_bijectMap(vector&lt; vector&lt; int &gt; &gt; &amp;vin)'],['../classGPUGenie_1_1inv__list.html#afce561b2bd9b0dd5d8f6dd8e1336d363',1,'GPUGenie::inv_list::invert_bijectMap(int *data, unsigned int item_num, unsigned int *index, unsigned int row_num)']]],
+  ['invert_5fsequence',['invert_sequence',['../classGPUGenie_1_1inv__list.html#a53358b8aee499b9a8d359613eb49e6b7',1,'GPUGenie::inv_list']]],
+  ['invert_5fsubsequence',['invert_subsequence',['../classGPUGenie_1_1inv__list.html#a1d5754e7e1595439400069ff22ee833d',1,'GPUGenie::inv_list::invert_subsequence(vector&lt; vector&lt; int &gt; &gt; &amp;vin)'],['../classGPUGenie_1_1inv__list.html#a857a128b3308cd7c3d7679166aa453bb',1,'GPUGenie::inv_list::invert_subsequence(int *data, unsigned int item_num, unsigned int *index, unsigned int row_num)']]],
   ['is_5fload_5fbalanced',['is_load_balanced',['../classGPUGenie_1_1query.html#a1920caa76df3331c9a6155bd3b663797',1,'GPUGenie::query']]],
+  ['is_5fstored_5fin_5fgpu',['is_stored_in_gpu',['../classGPUGenie_1_1inv__table.html#aeeb4b1f8e23d404a27f3286033ec978a',1,'GPUGenie::inv_table']]],
   ['item_5fnum',['item_num',['../structGPUGenie_1_1__GPUGenie__Config.html#aeeb1847188ed2853479d7eb5ee59f294',1,'GPUGenie::_GPUGenie_Config']]]
 ];

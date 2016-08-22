@@ -9,8 +9,7 @@ var indexSectionsWithContent =
   6: "adgtu",
   7: "s",
   8: "bn",
-  9: "cglmno",
-  10: "i"
+  9: "cglmnot"
 };
 
 var indexSectionNames =
@@ -24,8 +23,7 @@ var indexSectionNames =
   6: "typedefs",
   7: "enums",
   8: "enumvalues",
-  9: "defines",
-  10: "pages"
+  9: "defines"
 };
 
 var indexSectionLabels =
@@ -39,7 +37,6 @@ var indexSectionLabels =
   6: "Typedefs",
   7: "Enumerations",
   8: "Enumerator",
-  9: "Macros",
-  10: "Pages"
+  9: "Macros"
 };
 

@@ -3,6 +3,7 @@ var searchData=
   ['d_5finv_5fp',['d_inv_p',['../classGPUGenie_1_1inv__table.html#a9e30c9da4c4dac2c1b95f46b436dd594',1,'GPUGenie::inv_table']]],
   ['data',['data',['../structGPUGenie_1_1__GPUGenie__Config.html#a9334f01c014ac9337ad40a2cb7771977',1,'GPUGenie::_GPUGenie_Config']]],
   ['data_5f',['data_',['../structdata__.html',1,'']]],
+  ['data_5fgram_5flength',['data_gram_length',['../structGPUGenie_1_1__GPUGenie__Config.html#add9b84aa4387105f1650c19222a89a47',1,'GPUGenie::_GPUGenie_Config']]],
   ['data_5fpoints',['data_points',['../structGPUGenie_1_1__GPUGenie__Config.html#ac014caa402bab0922151bf38ccb2123b',1,'GPUGenie::_GPUGenie_Config']]],
   ['data_5ft',['data_t',['../match_8h.html#a8c25d63718f683c5fd8e45227dc7c79b',1,'match.h']]],
   ['data_5ftype',['data_type',['../structGPUGenie_1_1__GPUGenie__Config.html#a9ca00410a36ccba9ead342e8f7d9eb53',1,'GPUGenie::_GPUGenie_Config']]],

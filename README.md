@@ -9,8 +9,8 @@ A Generic Inverted Index Framework for Similarity Search on the GPU, (TR 11/15),
 
 ### Compiler and development
 
-You are required to install gcc, g++, nvcc and cmake. Please make sure that the cmake version is greater tha nversion 2.8 and nvcc version is greater than cuda 7.
-
+You are required to install gcc, g++, nvcc and cmake. Please make sure that the cmake version is greater the version 2.8 and nvcc version is greater than cuda 7. Besides, boost should be installed and the version should be at least 1.6.0, which includes the API for unordered_map serialization.
+g++11 standard should be included.
 To compile the program:
 
 ```
@@ -26,7 +26,7 @@ To generate the documents of the project, just type
 
 
 ```
-make doc
+doxygen doc/doxy.config
 ```
 
 The documents (with html format and latex format) will be generated whinin the folder "doc"
@@ -52,6 +52,8 @@ and then command
 ```
  ./example_bin
 ```
+
+We suggest you looking into test folder. Each test is a independent example.
 
 
 You can see the query results based on the data file "sift_1k.csv". 

@@ -89,6 +89,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classGPUGenie_1_1inv__list-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">GPUGenie::inv_list Class Reference</div>  </div>
@@ -110,12 +111,23 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a71ac0123f719eeaea8268ad6362a55ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6f8633c4379cfdd59f929bd71c2d064"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGPUGenie_1_1inv__list.html#ac6f8633c4379cfdd59f929bd71c2d064">inv_list</a> (vector&lt; int &gt; *vin)</td></tr>
 <tr class="separator:ac6f8633c4379cfdd59f929bd71c2d064"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acec4634c63a2efc8914c571d146bb33d"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGPUGenie_1_1inv__list.html#acec4634c63a2efc8914c571d146bb33d">_shift_bits_subsequence</a> ()</td></tr>
+<tr class="separator:acec4634c63a2efc8914c571d146bb33d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a925f46be13936429f0cbba23dc51495d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGPUGenie_1_1inv__list.html#a925f46be13936429f0cbba23dc51495d">invert_bijectMap</a> (vector&lt; vector&lt; int &gt; &gt; &amp;vin)</td></tr>
 <tr class="memdesc:a925f46be13936429f0cbba23dc51495d"><td class="mdescLeft">&#160;</td><td class="mdescRight">invert a special kind of data,which is of one dimension  <a href="#a925f46be13936429f0cbba23dc51495d">More...</a><br /></td></tr>
 <tr class="separator:a925f46be13936429f0cbba23dc51495d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afce561b2bd9b0dd5d8f6dd8e1336d363"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGPUGenie_1_1inv__list.html#afce561b2bd9b0dd5d8f6dd8e1336d363">invert_bijectMap</a> (int *data, unsigned int item_num, unsigned int *<a class="el" href="classGPUGenie_1_1inv__list.html#a18fb1ce06ef10611d85992d71c0d5862">index</a>, unsigned int row_num)</td></tr>
 <tr class="memdesc:afce561b2bd9b0dd5d8f6dd8e1336d363"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle input from binary file.  <a href="#afce561b2bd9b0dd5d8f6dd8e1336d363">More...</a><br /></td></tr>
 <tr class="separator:afce561b2bd9b0dd5d8f6dd8e1336d363"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d5754e7e1595439400069ff22ee833d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGPUGenie_1_1inv__list.html#a1d5754e7e1595439400069ff22ee833d">invert_subsequence</a> (vector&lt; vector&lt; int &gt; &gt; &amp;vin)</td></tr>
+<tr class="memdesc:a1d5754e7e1595439400069ff22ee833d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used for subsequence search, csv input.  <a href="#a1d5754e7e1595439400069ff22ee833d">More...</a><br /></td></tr>
+<tr class="separator:a1d5754e7e1595439400069ff22ee833d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a857a128b3308cd7c3d7679166aa453bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGPUGenie_1_1inv__list.html#a857a128b3308cd7c3d7679166aa453bb">invert_subsequence</a> (int *data, unsigned int item_num, unsigned int *<a class="el" href="classGPUGenie_1_1inv__list.html#a18fb1ce06ef10611d85992d71c0d5862">index</a>, unsigned int row_num)</td></tr>
+<tr class="memdesc:a857a128b3308cd7c3d7679166aa453bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used for subsequence search, binary input.  <a href="#a857a128b3308cd7c3d7679166aa453bb">More...</a><br /></td></tr>
+<tr class="separator:a857a128b3308cd7c3d7679166aa453bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53358b8aee499b9a8d359613eb49e6b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGPUGenie_1_1inv__list.html#a53358b8aee499b9a8d359613eb49e6b7">invert_sequence</a> (vector&lt; vector&lt; int &gt; &gt; &amp;vin, int &amp;shift_bits, vector&lt; int &gt; &amp;respective_id)</td></tr>
+<tr class="memdesc:a53358b8aee499b9a8d359613eb49e6b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is used for sequence match.  <a href="#a53358b8aee499b9a8d359613eb49e6b7">More...</a><br /></td></tr>
+<tr class="separator:a53358b8aee499b9a8d359613eb49e6b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a012d16504362f655fa95d5e0d2887f60"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGPUGenie_1_1inv__list.html#a012d16504362f655fa95d5e0d2887f60">inv_list</a> (vector&lt; string &gt; &amp;vin)</td></tr>
 <tr class="memdesc:a012d16504362f655fa95d5e0d2887f60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an <a class="el" href="classGPUGenie_1_1inv__list.html" title="This class manages one inverted list. ">inv_list</a> from a string vector.  <a href="#a012d16504362f655fa95d5e0d2887f60">More...</a><br /></td></tr>
 <tr class="separator:a012d16504362f655fa95d5e0d2887f60"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -157,6 +169,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a939707d15df625f4573db4f9b86eb2b7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGPUGenie_1_1inv__list.html#a939707d15df625f4573db4f9b86eb2b7">value_range</a> ()</td></tr>
 <tr class="memdesc:a939707d15df625f4573db4f9b86eb2b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of different values in the attribute.  <a href="#a939707d15df625f4573db4f9b86eb2b7">More...</a><br /></td></tr>
 <tr class="separator:a939707d15df625f4573db4f9b86eb2b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:ad7f9b18a0b31d6b48ed76250f1c992ff"><td class="memItemLeft" align="right" valign="top">unordered_map&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGPUGenie_1_1inv__list.html#ad7f9b18a0b31d6b48ed76250f1c992ff">_distinct</a></td></tr>
+<tr class="separator:ad7f9b18a0b31d6b48ed76250f1c992ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class manages one inverted list. </p>
@@ -187,7 +204,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Create an empty <a class="el" href="classGPUGenie_1_1inv__list.html" title="This class manages one inverted list. ">inv_list</a>. </p>
 
-<p>Definition at line <a class="el" href="inv__list_8h_source.html#l00047">47</a> of file <a class="el" href="inv__list_8h_source.html">inv_list.h</a>.</p>
+<p>Definition at line <a class="el" href="inv__list_8h_source.html#l00060">60</a> of file <a class="el" href="inv__list_8h_source.html">inv_list.h</a>.</p>
 
 </div>
 </div>
@@ -213,7 +230,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="inv__list_8cc_source.html#l00014">14</a> of file <a class="el" href="inv__list_8cc_source.html">inv_list.cc</a>.</p>
+<p>Definition at line <a class="el" href="inv__list_8cu_source.html#l00015">15</a> of file <a class="el" href="inv__list_8cu_source.html">inv_list.cu</a>.</p>
 
 </div>
 </div>
@@ -231,7 +248,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="inv__list_8cc_source.html#l00019">19</a> of file <a class="el" href="inv__list_8cc_source.html">inv_list.cc</a>.</p>
+<p>Definition at line <a class="el" href="inv__list_8cu_source.html#l00020">20</a> of file <a class="el" href="inv__list_8cu_source.html">inv_list.cu</a>.</p>
 
 </div>
 </div>
@@ -258,7 +275,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <p>The default converter atoi will be invoked to convert the string value to int value. </p>
 
-<p>Definition at line <a class="el" href="inv__list_8cc_source.html#l00024">24</a> of file <a class="el" href="inv__list_8cc_source.html">inv_list.cc</a>.</p>
+<p>Definition at line <a class="el" href="inv__list_8cu_source.html#l00025">25</a> of file <a class="el" href="inv__list_8cu_source.html">inv_list.cu</a>.</p>
 
 </div>
 </div>
@@ -285,11 +302,29 @@ Public Member Functions</h2></td></tr>
 </dl>
 <p>The default converter atoi will be invoked to convert the string value to int value. </p>
 
-<p>Definition at line <a class="el" href="inv__list_8cc_source.html#l00029">29</a> of file <a class="el" href="inv__list_8cc_source.html">inv_list.cc</a>.</p>
+<p>Definition at line <a class="el" href="inv__list_8cu_source.html#l00030">30</a> of file <a class="el" href="inv__list_8cu_source.html">inv_list.cu</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="acec4634c63a2efc8914c571d146bb33d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int GPUGenie::inv_list::_shift_bits_subsequence </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The shift bits used in subsequence search </dd></dl>
+
+<p>Definition at line <a class="el" href="inv__list_8cu_source.html#l00287">287</a> of file <a class="el" href="inv__list_8cu_source.html">inv_list.cu</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ade35726e67dfc2a7ff627083fa6dea58"></a>
 <div class="memitem">
 <div class="memproto">
@@ -313,7 +348,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True only if the vaule is in the <a class="el" href="classGPUGenie_1_1inv__list.html" title="This class manages one inverted list. ">inv_list</a>. </dd></dl>
 
-<p>Definition at line <a class="el" href="inv__list_8cc_source.html#l00188">188</a> of file <a class="el" href="inv__list_8cc_source.html">inv_list.cc</a>.</p>
+<p>Definition at line <a class="el" href="inv__list_8cu_source.html#l00370">370</a> of file <a class="el" href="inv__list_8cu_source.html">inv_list.cu</a>.</p>
 
 </div>
 </div>
@@ -341,7 +376,7 @@ Public Member Functions</h2></td></tr>
 <p>The value's indexes in the original vector. Return NULL if the given value does not appear in the original vector.</p>
 <dl class="section return"><dt>Returns</dt><dd>Pointer points to the indexes vector. NULL if the value does not appear in the original vector. </dd></dl>
 
-<p>Definition at line <a class="el" href="inv__list_8cc_source.html#l00196">196</a> of file <a class="el" href="inv__list_8cc_source.html">inv_list.cc</a>.</p>
+<p>Definition at line <a class="el" href="inv__list_8cu_source.html#l00378">378</a> of file <a class="el" href="inv__list_8cu_source.html">inv_list.cu</a>.</p>
 
 </div>
 </div>
@@ -367,7 +402,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="inv__list_8cc_source.html#l00110">110</a> of file <a class="el" href="inv__list_8cc_source.html">inv_list.cc</a>.</p>
+<p>Definition at line <a class="el" href="inv__list_8cu_source.html#l00292">292</a> of file <a class="el" href="inv__list_8cu_source.html">inv_list.cu</a>.</p>
 
 </div>
 </div>
@@ -385,7 +420,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="inv__list_8cc_source.html#l00137">137</a> of file <a class="el" href="inv__list_8cc_source.html">inv_list.cc</a>.</p>
+<p>Definition at line <a class="el" href="inv__list_8cu_source.html#l00319">319</a> of file <a class="el" href="inv__list_8cu_source.html">inv_list.cu</a>.</p>
 
 </div>
 </div>
@@ -412,7 +447,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <p>The default converter atoi will be invoked to convert the string value to int value. </p>
 
-<p>Definition at line <a class="el" href="inv__list_8cc_source.html#l00142">142</a> of file <a class="el" href="inv__list_8cc_source.html">inv_list.cc</a>.</p>
+<p>Definition at line <a class="el" href="inv__list_8cu_source.html#l00324">324</a> of file <a class="el" href="inv__list_8cu_source.html">inv_list.cu</a>.</p>
 
 </div>
 </div>
@@ -439,7 +474,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <p>The default converter atoi will be invoked to convert the string value to int value. </p>
 
-<p>Definition at line <a class="el" href="inv__list_8cc_source.html#l00147">147</a> of file <a class="el" href="inv__list_8cc_source.html">inv_list.cc</a>.</p>
+<p>Definition at line <a class="el" href="inv__list_8cu_source.html#l00329">329</a> of file <a class="el" href="inv__list_8cu_source.html">inv_list.cu</a>.</p>
 
 </div>
 </div>
@@ -477,7 +512,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <p>The void pointer will be passed to the converter function. For example, if the converter converts the string to int based on the min max value, the void pointer shall point to the structure which contains min max then in the converter function stoi, downcast the void pointer to the min max structure. </p>
 
-<p>Definition at line <a class="el" href="inv__list_8cc_source.html#l00152">152</a> of file <a class="el" href="inv__list_8cc_source.html">inv_list.cc</a>.</p>
+<p>Definition at line <a class="el" href="inv__list_8cu_source.html#l00334">334</a> of file <a class="el" href="inv__list_8cu_source.html">inv_list.cu</a>.</p>
 
 </div>
 </div>
@@ -515,7 +550,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <p>The void pointer will be passed to the converter function. For example, if the converter converts the string to int based on the min max value, the void pointer shall point to the structure which contains min max then in the converter function stoi, downcast the void pointer to the min max structure. </p>
 
-<p>Definition at line <a class="el" href="inv__list_8cc_source.html#l00182">182</a> of file <a class="el" href="inv__list_8cc_source.html">inv_list.cc</a>.</p>
+<p>Definition at line <a class="el" href="inv__list_8cu_source.html#l00364">364</a> of file <a class="el" href="inv__list_8cu_source.html">inv_list.cu</a>.</p>
 
 </div>
 </div>
@@ -542,7 +577,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <p>This function will be used to invert data points like short text data, which has only one dimension but many individual words on that attibute. Data is from a csv file. </p>
 
-<p>Definition at line <a class="el" href="inv__list_8cc_source.html#l00048">48</a> of file <a class="el" href="inv__list_8cc_source.html">inv_list.cc</a>.</p>
+<p>Definition at line <a class="el" href="inv__list_8cu_source.html#l00049">49</a> of file <a class="el" href="inv__list_8cu_source.html">inv_list.cu</a>.</p>
 
 </div>
 </div>
@@ -594,7 +629,128 @@ Public Member Functions</h2></td></tr>
 </dl>
 <p>This function does the same thing as <a class="el" href="classGPUGenie_1_1inv__list.html#a925f46be13936429f0cbba23dc51495d" title="invert a special kind of data,which is of one dimension ">invert_bijectMap(vector&lt;vector&lt;int&gt; &gt; &amp; vin)</a>, but the input is from a binary form. </p>
 
-<p>Definition at line <a class="el" href="inv__list_8cc_source.html#l00082">82</a> of file <a class="el" href="inv__list_8cc_source.html">inv_list.cc</a>.</p>
+<p>Definition at line <a class="el" href="inv__list_8cu_source.html#l00157">157</a> of file <a class="el" href="inv__list_8cu_source.html">inv_list.cu</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a53358b8aee499b9a8d359613eb49e6b7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GPUGenie::inv_list::invert_sequence </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; vector&lt; int &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>vin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>shift_bits</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>respective_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This is used for sequence match. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vin</td><td>Data to be inverted. </td></tr>
+    <tr><td class="paramname">shift_bits</td><td>Number of bits to shift. </td></tr>
+    <tr><td class="paramname">respective_id</td><td>The id for each line of vin. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="inv__list_8cu_source.html#l00085">85</a> of file <a class="el" href="inv__list_8cu_source.html">inv_list.cu</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1d5754e7e1595439400069ff22ee833d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GPUGenie::inv_list::invert_subsequence </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; vector&lt; int &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>vin</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function is used for subsequence search, csv input. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vin</td><td>Sequence value of all rows </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="inv__list_8cu_source.html#l00186">186</a> of file <a class="el" href="inv__list_8cu_source.html">inv_list.cu</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a857a128b3308cd7c3d7679166aa453bb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GPUGenie::inv_list::invert_subsequence </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>item_num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int *&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>row_num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function is used for subsequence search, binary input. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Array storing all sequence elements </td></tr>
+    <tr><td class="paramname">item_num</td><td>Length of data array </td></tr>
+    <tr><td class="paramname">index</td><td>Stores elements pointing to starting position of each row in data array </td></tr>
+    <tr><td class="paramname">row_num</td><td>Length of index array </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="inv__list_8cu_source.html#l00229">229</a> of file <a class="el" href="inv__list_8cu_source.html">inv_list.cu</a>.</p>
 
 </div>
 </div>
@@ -614,7 +770,7 @@ Public Member Functions</h2></td></tr>
 <p>Return the max value of the inverted vector. </p>
 <dl class="section return"><dt>Returns</dt><dd>The max value of the inverted vector. </dd></dl>
 
-<p>Definition at line <a class="el" href="inv__list_8cc_source.html#l00039">39</a> of file <a class="el" href="inv__list_8cc_source.html">inv_list.cc</a>.</p>
+<p>Definition at line <a class="el" href="inv__list_8cu_source.html#l00040">40</a> of file <a class="el" href="inv__list_8cu_source.html">inv_list.cu</a>.</p>
 
 </div>
 </div>
@@ -634,7 +790,7 @@ Public Member Functions</h2></td></tr>
 <p>Return the min value of the inverted vector. </p>
 <dl class="section return"><dt>Returns</dt><dd>The min value of the inverted vector. </dd></dl>
 
-<p>Definition at line <a class="el" href="inv__list_8cc_source.html#l00034">34</a> of file <a class="el" href="inv__list_8cc_source.html">inv_list.cc</a>.</p>
+<p>Definition at line <a class="el" href="inv__list_8cu_source.html#l00035">35</a> of file <a class="el" href="inv__list_8cu_source.html">inv_list.cu</a>.</p>
 
 </div>
 </div>
@@ -654,7 +810,7 @@ Public Member Functions</h2></td></tr>
 <p>Return the number of instances. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of instances. </dd></dl>
 
-<p>Definition at line <a class="el" href="inv__list_8cc_source.html#l00044">44</a> of file <a class="el" href="inv__list_8cc_source.html">inv_list.cc</a>.</p>
+<p>Definition at line <a class="el" href="inv__list_8cu_source.html#l00045">45</a> of file <a class="el" href="inv__list_8cu_source.html">inv_list.cu</a>.</p>
 
 </div>
 </div>
@@ -674,13 +830,28 @@ Public Member Functions</h2></td></tr>
 <p>Return the number of different values in the attribute. </p>
 <dl class="section return"><dt>Returns</dt><dd>Number of different values in the attribute </dd></dl>
 
-<p>Definition at line <a class="el" href="inv__list_8cc_source.html#l00204">204</a> of file <a class="el" href="inv__list_8cc_source.html">inv_list.cc</a>.</p>
+<p>Definition at line <a class="el" href="inv__list_8cu_source.html#l00386">386</a> of file <a class="el" href="inv__list_8cu_source.html">inv_list.cu</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ad7f9b18a0b31d6b48ed76250f1c992ff"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unordered_map&lt;int, int&gt; GPUGenie::inv_list::_distinct</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="inv__list_8h_source.html#l00028">28</a> of file <a class="el" href="inv__list_8h_source.html">inv_list.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/mnt/hd1/home/yangyueji/project/release/GPUGenie/src/GPUGenie/<a class="el" href="inv__list_8h_source.html">inv_list.h</a></li>
-<li>/mnt/hd1/home/yangyueji/project/release/GPUGenie/src/GPUGenie/<a class="el" href="inv__list_8cc_source.html">inv_list.cc</a></li>
+<li>/mnt/hd1/home/yangyueji/release_version/GPUGENIE-Release/src/GPUGenie/<a class="el" href="inv__list_8h_source.html">inv_list.h</a></li>
+<li>/mnt/hd1/home/yangyueji/release_version/GPUGENIE-Release/src/GPUGenie/<a class="el" href="inv__list_8cu_source.html">inv_list.cu</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

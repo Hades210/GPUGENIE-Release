@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.12"/>
-<title>GPUGenie: /mnt/hd1/home/yangyueji/project/release/GPUGenie/src/GPUGenie/heap_count.cu File Reference</title>
+<title>GPUGenie: /mnt/hd1/home/yangyueji/release_version/GPUGENIE-Release/src/GPUGenie/heap_count.cu File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -86,6 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">heap_count.cu File Reference</div>  </div>
@@ -105,10 +106,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &quot;<a class="el" href="match_8h_source.html">match.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="genie__errors_8h_source.html">genie_errors.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="heap__count_8h_source.html">heap_count.h</a>&quot;</code><br />
-<code>#include &quot;GPUGenie.h&quot;</code><br />
 </div>
 <p><a href="heap__count_8cu_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a869bf6501bf4809f3de1db59ef2dd914"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap__count_8cu.html#a869bf6501bf4809f3de1db59ef2dd914">THREADS_PER_BLOCK</a>&#160;&#160;&#160;256</td></tr>
+<tr class="separator:a869bf6501bf4809f3de1db59ef2dd914"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac91739053f65d5a35120fd9121540f4d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap__count_8cu.html#ac91739053f65d5a35120fd9121540f4d">GPUGenie_Minus_One_THREADS_PER_BLOCK</a>&#160;&#160;&#160;1024</td></tr>
+<tr class="separator:ac91739053f65d5a35120fd9121540f4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:acd07972af08d77858d7a205142697d01"><td class="memItemLeft" align="right" valign="top">__global__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap__count_8cu.html#acd07972af08d77858d7a205142697d01">count_over_threshold</a> (<a class="el" href="match_8h.html#a8c25d63718f683c5fd8e45227dc7c79b">data_t</a> *data, int *result, <a class="el" href="match_8h.html#ae65af0c4a8ee050043fe4b575f0a26a0">u32</a> *thresholds, int data_size)</td></tr>
@@ -126,7 +133,36 @@ Functions</h2></td></tr>
 <div class="textblock"><p>Implementation for <a class="el" href="heap__count_8h.html" title="This file implements the function for topk selection in the final hashtable. ">heap_count.h</a>. </p>
 
 <p>Definition in file <a class="el" href="heap__count_8cu_source.html">heap_count.cu</a>.</p>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="ac91739053f65d5a35120fd9121540f4d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GPUGenie_Minus_One_THREADS_PER_BLOCK&#160;&#160;&#160;1024</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="heap__count_8cu_source.html#l00018">18</a> of file <a class="el" href="heap__count_8cu_source.html">heap_count.cu</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a869bf6501bf4809f3de1db59ef2dd914"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define THREADS_PER_BLOCK&#160;&#160;&#160;256</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="heap__count_8cu_source.html#l00017">17</a> of file <a class="el" href="heap__count_8cu_source.html">heap_count.cu</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="acd07972af08d77858d7a205142697d01"></a>
 <div class="memitem">
 <div class="memproto">
@@ -163,7 +199,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="heap__count_8cu_source.html#l00021">21</a> of file <a class="el" href="heap__count_8cu_source.html">heap_count.cu</a>.</p>
+<p>Definition at line <a class="el" href="heap__count_8cu_source.html#l00023">23</a> of file <a class="el" href="heap__count_8cu_source.html">heap_count.cu</a>.</p>
 
 </div>
 </div>
@@ -203,7 +239,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="heap__count_8cu_source.html#l00039">39</a> of file <a class="el" href="heap__count_8cu_source.html">heap_count.cu</a>.</p>
+<p>Definition at line <a class="el" href="heap__count_8cu_source.html#l00041">41</a> of file <a class="el" href="heap__count_8cu_source.html">heap_count.cu</a>.</p>
 
 </div>
 </div>
@@ -255,7 +291,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="heap__count_8cu_source.html#l00066">66</a> of file <a class="el" href="heap__count_8cu_source.html">heap_count.cu</a>.</p>
+<p>Definition at line <a class="el" href="heap__count_8cu_source.html#l00068">68</a> of file <a class="el" href="heap__count_8cu_source.html">heap_count.cu</a>.</p>
 
 </div>
 </div>
@@ -289,7 +325,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="heap__count_8cu_source.html#l00114">114</a> of file <a class="el" href="heap__count_8cu_source.html">heap_count.cu</a>.</p>
+<p>Definition at line <a class="el" href="heap__count_8cu_source.html#l00116">116</a> of file <a class="el" href="heap__count_8cu_source.html">heap_count.cu</a>.</p>
 
 </div>
 </div>
@@ -317,7 +353,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="heap__count_8cu_source.html#l00127">127</a> of file <a class="el" href="heap__count_8cu_source.html">heap_count.cu</a>.</p>
+<p>Definition at line <a class="el" href="heap__count_8cu_source.html#l00129">129</a> of file <a class="el" href="heap__count_8cu_source.html">heap_count.cu</a>.</p>
 
 </div>
 </div>

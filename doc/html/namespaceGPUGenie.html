@@ -212,9 +212,24 @@ Functions</h2></td></tr>
 <tr class="memitem:a02932795f646385e78f336e18c6c1f58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceGPUGenie.html#a02932795f646385e78f336e18c6c1f58">load_table_bijectMap</a> (<a class="el" href="classGPUGenie_1_1inv__table.html">inv_table</a> &amp;table, int *data, unsigned int item_num, unsigned int *index, unsigned int row_num, <a class="el" href="namespaceGPUGenie.html#ababe47c7ab2da7aade0d581d027c40dd">GPUGenie_Config</a> &amp;config)</td></tr>
 <tr class="memdesc:a02932795f646385e78f336e18c6c1f58"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function constructs the <a class="el" href="classGPUGenie_1_1inv__table.html" title="The declaration for class inv_table. ">inv_table</a> for dataset from binary files.  <a href="#a02932795f646385e78f336e18c6c1f58">More...</a><br /></td></tr>
 <tr class="separator:a02932795f646385e78f336e18c6c1f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a651a3d48f54ee106c5561bc713256252"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceGPUGenie.html#a651a3d48f54ee106c5561bc713256252">load_table_sequence</a> (<a class="el" href="classGPUGenie_1_1inv__table.html">inv_table</a> &amp;table, vector&lt; vector&lt; int &gt; &gt; &amp;data_points, <a class="el" href="namespaceGPUGenie.html#ababe47c7ab2da7aade0d581d027c40dd">GPUGenie_Config</a> &amp;config)</td></tr>
+<tr class="memdesc:a651a3d48f54ee106c5561bc713256252"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function handles construction of <a class="el" href="classGPUGenie_1_1inv__table.html" title="The declaration for class inv_table. ">inv_table</a> for sequence search.  <a href="#a651a3d48f54ee106c5561bc713256252">More...</a><br /></td></tr>
+<tr class="separator:a651a3d48f54ee106c5561bc713256252"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf98fabe8237857ded9846b3055bb1eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceGPUGenie.html#acf98fabe8237857ded9846b3055bb1eb">load_query_sequence</a> (<a class="el" href="classGPUGenie_1_1inv__table.html">inv_table</a> &amp;table, vector&lt; <a class="el" href="classGPUGenie_1_1query.html">query</a> &gt; &amp;queries, <a class="el" href="namespaceGPUGenie.html#ababe47c7ab2da7aade0d581d027c40dd">GPUGenie_Config</a> &amp;config)</td></tr>
+<tr class="memdesc:acf98fabe8237857ded9846b3055bb1eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function help constructs queries' structure on a specific <a class="el" href="classGPUGenie_1_1inv__table.html" title="The declaration for class inv_table. ">inv_table</a>.  <a href="#acf98fabe8237857ded9846b3055bb1eb">More...</a><br /></td></tr>
+<tr class="separator:acf98fabe8237857ded9846b3055bb1eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a561d4c6a4da835799010987b38863914"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceGPUGenie.html#a561d4c6a4da835799010987b38863914">sequence_to_gram</a> (vector&lt; vector&lt; int &gt; &gt; &amp;sequences, vector&lt; vector&lt; int &gt; &gt; &amp;gram_data, int max_value, int gram_length)</td></tr>
+<tr class="memdesc:a561d4c6a4da835799010987b38863914"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to convert initial sequence data to sequences represented by n-gram data.  <a href="#a561d4c6a4da835799010987b38863914">More...</a><br /></td></tr>
+<tr class="separator:a561d4c6a4da835799010987b38863914"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04752aae2446f0e44258de40b915af7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceGPUGenie.html#a04752aae2446f0e44258de40b915af7d">sequence_reduce_to_ground</a> (vector&lt; vector&lt; int &gt; &gt; &amp;data, vector&lt; vector&lt; int &gt; &gt; &amp;converted_data, int &amp;min_value, int &amp;max_value)</td></tr>
+<tr class="memdesc:a04752aae2446f0e44258de40b915af7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the max value and min value of data, and subtract each element by min value.  <a href="#a04752aae2446f0e44258de40b915af7d">More...</a><br /></td></tr>
+<tr class="separator:a04752aae2446f0e44258de40b915af7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad035ab602b4f63edae3084de0dbeee9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceGPUGenie.html#ad035ab602b4f63edae3084de0dbeee9f">reset_device</a> ()</td></tr>
 <tr class="memdesc:ad035ab602b4f63edae3084de0dbeee9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">clear gpu memory  <a href="#ad035ab602b4f63edae3084de0dbeee9f">More...</a><br /></td></tr>
 <tr class="separator:ad035ab602b4f63edae3084de0dbeee9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a494926210f24500e9f7b5cddcfa499bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceGPUGenie.html#a494926210f24500e9f7b5cddcfa499bb">get_rowID_offset</a> (vector&lt; int &gt; &amp;result, vector&lt; int &gt; &amp;resultID, vector&lt; int &gt; &amp;resultOffset, unsigned int shift_bits)</td></tr>
+<tr class="memdesc:a494926210f24500e9f7b5cddcfa499bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get rowID and corresponding offset in two vectors.  <a href="#a494926210f24500e9f7b5cddcfa499bb">More...</a><br /></td></tr>
+<tr class="separator:a494926210f24500e9f7b5cddcfa499bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa29a3db99978d1c8c7aa096fc97c9cb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceGPUGenie.html#aa29a3db99978d1c8c7aa096fc97c9cb0">knn</a> (<a class="el" href="classGPUGenie_1_1inv__table.html">inv_table</a> &amp;table, vector&lt; <a class="el" href="classGPUGenie_1_1query.html">query</a> &gt; &amp;queries, device_vector&lt; int &gt; &amp;d_top_indexes, device_vector&lt; int &gt; &amp;d_top_count, int hash_table_size, int max_load, int bitmap_bits, int dim)</td></tr>
 <tr class="memdesc:aa29a3db99978d1c8c7aa096fc97c9cb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the top k values in given <a class="el" href="classGPUGenie_1_1inv__table.html" title="The declaration for class inv_table. ">inv_table</a>.  <a href="#aa29a3db99978d1c8c7aa096fc97c9cb0">More...</a><br /></td></tr>
 <tr class="separator:aa29a3db99978d1c8c7aa096fc97c9cb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -354,7 +369,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The max value of counts of queries in the query set. </dd></dl>
 
-<p>Definition at line <a class="el" href="match_8cu_source.html#l00740">740</a> of file <a class="el" href="match_8cu_source.html">match.cu</a>.</p>
+<p>Definition at line <a class="el" href="match_8cu_source.html#l00634">634</a> of file <a class="el" href="match_8cu_source.html">match.cu</a>.</p>
 
 </div>
 </div>
@@ -382,7 +397,7 @@ Variables</h2></td></tr>
 <p>The function would get the maximum topk of queries in the query set. And would use this topk as the global topk for all search process.</p>
 <dl class="section return"><dt>Returns</dt><dd>Maximum topk. </dd></dl>
 
-<p>Definition at line <a class="el" href="match_8cu_source.html#l00777">777</a> of file <a class="el" href="match_8cu_source.html">match.cu</a>.</p>
+<p>Definition at line <a class="el" href="match_8cu_source.html#l00675">675</a> of file <a class="el" href="match_8cu_source.html">match.cu</a>.</p>
 
 </div>
 </div>
@@ -427,7 +442,7 @@ Variables</h2></td></tr>
 </dl>
 <p>Reading csv files is time-comsuming. If you want to read a csv file for many times, we suggest you first convert the csv file to a binary file. Reading binary file can save a lot of time. You can build real-time app based on binary reading and searching </p>
 
-<p>Definition at line <a class="el" href="FileReader_8cc_source.html#l00176">176</a> of file <a class="el" href="FileReader_8cc_source.html">FileReader.cc</a>.</p>
+<p>Definition at line <a class="el" href="FileReader_8cu_source.html#l00176">176</a> of file <a class="el" href="FileReader_8cu_source.html">FileReader.cu</a>.</p>
 
 </div>
 </div>
@@ -445,7 +460,59 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="FileReader_8cc_source.html#l00040">40</a> of file <a class="el" href="FileReader_8cc_source.html">FileReader.cc</a>.</p>
+<p>Definition at line <a class="el" href="FileReader_8cu_source.html#l00040">40</a> of file <a class="el" href="FileReader_8cu_source.html">FileReader.cu</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a494926210f24500e9f7b5cddcfa499bb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GPUGenie::get_rowID_offset </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>resultID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>resultOffset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>shift_bits</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get rowID and corresponding offset in two vectors. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td>The original result with rowID and offset packed together. </td></tr>
+    <tr><td class="paramname">resultID</td><td>All the RowID without offset </td></tr>
+    <tr><td class="paramname">resultOffset</td><td>All the offset without rowID </td></tr>
+    <tr><td class="paramname">shift_bits</td><td>Bits to shift in order to get rowID</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>In subsequence search, the RowID and Offset are combined according to shift_bits. This function helps to seperate rowID and offset. </p>
+
+<p>Definition at line <a class="el" href="interface_8cu_source.html#l00911">911</a> of file <a class="el" href="interface_8cu_source.html">interface.cu</a>.</p>
 
 </div>
 </div>
@@ -512,7 +579,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="heap__count_8cu_source.html#l00157">157</a> of file <a class="el" href="heap__count_8cu_source.html">heap_count.cu</a>.</p>
+<p>Definition at line <a class="el" href="heap__count_8cu_source.html#l00159">159</a> of file <a class="el" href="heap__count_8cu_source.html">heap_count.cu</a>.</p>
 
 </div>
 </div>
@@ -834,7 +901,7 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>This function handle the rest procedure after preprocess finishes, </p>
+<p>This function handle the rest procedure after preprocess finishes, Multiload is also handled in this function. The results need to be merged in multiload situation </p>
 
 </div>
 </div>
@@ -996,7 +1063,51 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interface_8cu_source.html#l00199">199</a> of file <a class="el" href="interface_8cu_source.html">interface.cu</a>.</p>
+<p>Definition at line <a class="el" href="interface_8cu_source.html#l00460">460</a> of file <a class="el" href="interface_8cu_source.html">interface.cu</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acf98fabe8237857ded9846b3055bb1eb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GPUGenie::load_query_sequence </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classGPUGenie_1_1inv__table.html">inv_table</a> &amp;&#160;</td>
+          <td class="paramname"><em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; <a class="el" href="classGPUGenie_1_1query.html">query</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>queries</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceGPUGenie.html#ababe47c7ab2da7aade0d581d027c40dd">GPUGenie_Config</a> &amp;&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function help constructs queries' structure on a specific <a class="el" href="classGPUGenie_1_1inv__table.html" title="The declaration for class inv_table. ">inv_table</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">table</td><td>The specific <a class="el" href="classGPUGenie_1_1inv__table.html" title="The declaration for class inv_table. ">inv_table</a> for dataset. </td></tr>
+    <tr><td class="paramname">queries</td><td>The query set to return. </td></tr>
+    <tr><td class="paramname">config</td><td>User settings. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="interface_8cu_source.html#l00554">554</a> of file <a class="el" href="interface_8cu_source.html">interface.cu</a>.</p>
 
 </div>
 </div>
@@ -1040,7 +1151,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interface_8cu_source.html#l00245">245</a> of file <a class="el" href="interface_8cu_source.html">interface.cu</a>.</p>
+<p>Definition at line <a class="el" href="interface_8cu_source.html#l00506">506</a> of file <a class="el" href="interface_8cu_source.html">interface.cu</a>.</p>
 
 </div>
 </div>
@@ -1148,7 +1259,7 @@ Variables</h2></td></tr>
 </dl>
 <p>This function is responsible for handling data set from binary files. All data is sift. </p>
 
-<p>Definition at line <a class="el" href="interface_8cu_source.html#l00136">136</a> of file <a class="el" href="interface_8cu_source.html">interface.cu</a>.</p>
+<p>Definition at line <a class="el" href="interface_8cu_source.html#l00388">388</a> of file <a class="el" href="interface_8cu_source.html">interface.cu</a>.</p>
 
 </div>
 </div>
@@ -1257,7 +1368,51 @@ Variables</h2></td></tr>
 </dl>
 <p>This function is responsible for handling data set from binary files. And the data is for short-text-like data set. </p>
 
-<p>Definition at line <a class="el" href="interface_8cu_source.html#l00319">319</a> of file <a class="el" href="interface_8cu_source.html">interface.cu</a>.</p>
+<p>Definition at line <a class="el" href="interface_8cu_source.html#l00675">675</a> of file <a class="el" href="interface_8cu_source.html">interface.cu</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a651a3d48f54ee106c5561bc713256252"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GPUGenie::load_table_sequence </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classGPUGenie_1_1inv__table.html">inv_table</a> &amp;&#160;</td>
+          <td class="paramname"><em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; vector&lt; int &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>data_points</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceGPUGenie.html#ababe47c7ab2da7aade0d581d027c40dd">GPUGenie_Config</a> &amp;&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function handles construction of <a class="el" href="classGPUGenie_1_1inv__table.html" title="The declaration for class inv_table. ">inv_table</a> for sequence search. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">table</td><td>The <a class="el" href="classGPUGenie_1_1inv__table.html" title="The declaration for class inv_table. ">inv_table</a> to be constructed. </td></tr>
+    <tr><td class="paramname">data_points</td><td>The data set to be searched. </td></tr>
+    <tr><td class="paramname">config</td><td>The settings from User. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="interface_8cu_source.html#l00706">706</a> of file <a class="el" href="interface_8cu_source.html">interface.cu</a>.</p>
 
 </div>
 </div>
@@ -1329,7 +1484,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="match_8cu_source.html#l00787">787</a> of file <a class="el" href="match_8cu_source.html">match.cu</a>.</p>
+<p>Definition at line <a class="el" href="match_8cu_source.html#l00685">685</a> of file <a class="el" href="match_8cu_source.html">match.cu</a>.</p>
 
 </div>
 </div>
@@ -1405,7 +1560,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="match_8cu_source.html#l00796">796</a> of file <a class="el" href="match_8cu_source.html">match.cu</a>.</p>
+<p>Definition at line <a class="el" href="match_8cu_source.html#l00694">694</a> of file <a class="el" href="match_8cu_source.html">match.cu</a>.</p>
 
 </div>
 </div>
@@ -1441,10 +1596,10 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>This function includes the process of transferring a data set read from a binary file to an <a class="el" href="classGPUGenie_1_1inv__table.html" title="The declaration for class inv_table. ">inv_table</a>. The <a class="el" href="classGPUGenie_1_1inv__table.html" title="The declaration for class inv_table. ">inv_table</a> objects contain all the information about corresponding inverted index structure for given data set</p>
+<p>This function includes the process of transferring a data set read from a binary file to an <a class="el" href="classGPUGenie_1_1inv__table.html" title="The declaration for class inv_table. ">inv_table</a>, if user turn on multiload feature , the second parameter will point to an array of <a class="el" href="classGPUGenie_1_1inv__table.html" title="The declaration for class inv_table. ">inv_table</a> objects. The <a class="el" href="classGPUGenie_1_1inv__table.html" title="The declaration for class inv_table. ">inv_table</a> objects contain all the information about corresponding inverted index structure for given data set</p>
 <dl class="section return"><dt>Returns</dt><dd>true only when no error occurs </dd></dl>
 
-<p>Definition at line <a class="el" href="interface_8cu_source.html#l00063">63</a> of file <a class="el" href="interface_8cu_source.html">interface.cu</a>.</p>
+<p>Definition at line <a class="el" href="interface_8cu_source.html#l00186">186</a> of file <a class="el" href="interface_8cu_source.html">interface.cu</a>.</p>
 
 </div>
 </div>
@@ -1480,10 +1635,10 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>This function includes the process of transferring a data set read from a csv file to an <a class="el" href="classGPUGenie_1_1inv__table.html" title="The declaration for class inv_table. ">inv_table</a>. The <a class="el" href="classGPUGenie_1_1inv__table.html" title="The declaration for class inv_table. ">inv_table</a> objects contain all the information about corresponding inverted index structure for given data set</p>
+<p>This function includes the process of transferring a data set read from a csv file to an <a class="el" href="classGPUGenie_1_1inv__table.html" title="The declaration for class inv_table. ">inv_table</a>, if user turn on multiload feature , the second parameter will point to an array of <a class="el" href="classGPUGenie_1_1inv__table.html" title="The declaration for class inv_table. ">inv_table</a> objects. The <a class="el" href="classGPUGenie_1_1inv__table.html" title="The declaration for class inv_table. ">inv_table</a> objects contain all the information about corresponding inverted index structure for given data set</p>
 <dl class="section return"><dt>Returns</dt><dd>true only when no error occurs </dd></dl>
 
-<p>Definition at line <a class="el" href="interface_8cu_source.html#l00034">34</a> of file <a class="el" href="interface_8cu_source.html">interface.cu</a>.</p>
+<p>Definition at line <a class="el" href="interface_8cu_source.html#l00071">71</a> of file <a class="el" href="interface_8cu_source.html">interface.cu</a>.</p>
 
 </div>
 </div>
@@ -1528,7 +1683,7 @@ Variables</h2></td></tr>
 </dl>
 <p>This function can only read data from csv file. If the third parameter is set to -1, it means reading all the file. For non-multirange of query, we can use this way to read queries stored in csv files. </p>
 
-<p>Definition at line <a class="el" href="FileReader_8cc_source.html#l00052">52</a> of file <a class="el" href="FileReader_8cc_source.html">FileReader.cc</a>.</p>
+<p>Definition at line <a class="el" href="FileReader_8cu_source.html#l00052">52</a> of file <a class="el" href="FileReader_8cu_source.html">FileReader.cu</a>.</p>
 
 </div>
 </div>
@@ -1587,7 +1742,7 @@ Variables</h2></td></tr>
 </dl>
 <p>Binary reading is recommended for reading large size of dataset or need to do search many times on a same dataset. It can save you a lot of time. </p>
 
-<p>Definition at line <a class="el" href="FileReader_8cc_source.html#l00244">244</a> of file <a class="el" href="FileReader_8cc_source.html">FileReader.cc</a>.</p>
+<p>Definition at line <a class="el" href="FileReader_8cu_source.html#l00244">244</a> of file <a class="el" href="FileReader_8cu_source.html">FileReader.cu</a>.</p>
 
 </div>
 </div>
@@ -1666,7 +1821,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="FileReader_8cc_source.html#l00131">131</a> of file <a class="el" href="FileReader_8cc_source.html">FileReader.cc</a>.</p>
+<p>Definition at line <a class="el" href="FileReader_8cu_source.html#l00131">131</a> of file <a class="el" href="FileReader_8cu_source.html">FileReader.cu</a>.</p>
 
 </div>
 </div>
@@ -1732,7 +1887,109 @@ Variables</h2></td></tr>
 <p>clear gpu memory </p>
 <p>Every time a kernel finishes, there would be some information remained on GPU. It can cause the same problem as memory leakage. So we have to clear GPU, if we want to launch multiple queries in one host process </p>
 
-<p>Definition at line <a class="el" href="interface_8cu_source.html#l00481">481</a> of file <a class="el" href="interface_8cu_source.html">interface.cu</a>.</p>
+<p>Definition at line <a class="el" href="interface_8cu_source.html#l00906">906</a> of file <a class="el" href="interface_8cu_source.html">interface.cu</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a04752aae2446f0e44258de40b915af7d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GPUGenie::sequence_reduce_to_ground </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; vector&lt; int &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; vector&lt; int &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>converted_data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>min_value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>max_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Find the max value and min value of data, and subtract each element by min value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>The data waiting to be processed. </td></tr>
+    <tr><td class="paramname">converted_data</td><td>It stores a copy of data, where each element is subtracted by the minimum value. </td></tr>
+    <tr><td class="paramname">min_value</td><td>The min value returned. </td></tr>
+    <tr><td class="paramname">max_value</td><td>The max value returned. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="interface_8cu_source.html#l00968">968</a> of file <a class="el" href="interface_8cu_source.html">interface.cu</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a561d4c6a4da835799010987b38863914"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GPUGenie::sequence_to_gram </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; vector&lt; int &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>sequences</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; vector&lt; int &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>gram_data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gram_length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function is used to convert initial sequence data to sequences represented by n-gram data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sequences</td><td>The initial sequences. </td></tr>
+    <tr><td class="paramname">gram_data</td><td>The data to represent sequence which is broken into n-grams </td></tr>
+    <tr><td class="paramname">max_value</td><td>The range of value that can occur in the original sequences, should start at 0. </td></tr>
+    <tr><td class="paramname">gram_length</td><td>The length of one n-gram. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="interface_8cu_source.html#l00924">924</a> of file <a class="el" href="interface_8cu_source.html">interface.cu</a>.</p>
 
 </div>
 </div>
@@ -1760,7 +2017,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="FileReader_8cc_source.html#l00024">24</a> of file <a class="el" href="FileReader_8cc_source.html">FileReader.cc</a>.</p>
+<p>Definition at line <a class="el" href="FileReader_8cu_source.html#l00024">24</a> of file <a class="el" href="FileReader_8cu_source.html">FileReader.cu</a>.</p>
 
 </div>
 </div>

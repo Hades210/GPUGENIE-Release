@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.12"/>
-<title>GPUGenie: /mnt/hd1/home/yangyueji/project/release/GPUGenie/src/GPUGenie/knn.cu File Reference</title>
+<title>GPUGenie: /mnt/hd1/home/yangyueji/release_version/GPUGENIE-Release/src/GPUGenie/knn.cu File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -86,6 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
@@ -105,10 +106,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &quot;<a class="el" href="Timing_8h_source.html">Timing.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="genie__errors_8h_source.html">genie_errors.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="knn_8h_source.html">knn.h</a>&quot;</code><br />
-<code>#include &quot;GPUGenie.h&quot;</code><br />
 </div>
 <p><a href="knn_8cu_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a016a7fd59c8085385dc9104166fac2af"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knn_8cu.html#a016a7fd59c8085385dc9104166fac2af">GPUGenie_knn_THREADS_PER_BLOCK</a>&#160;&#160;&#160;1024</td></tr>
+<tr class="separator:a016a7fd59c8085385dc9104166fac2af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61ac6b52f42c67f69755d14fcf997e46"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knn_8cu.html#a61ac6b52f42c67f69755d14fcf997e46">GPUGenie_knn_DEFAULT_HASH_TABLE_SIZE</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a61ac6b52f42c67f69755d14fcf997e46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc372311e234d056a529e11018a48c7b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knn_8cu.html#afc372311e234d056a529e11018a48c7b">GPUGenie_knn_DEFAULT_BITMAP_BITS</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:afc372311e234d056a529e11018a48c7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9a0e3aa52909932a78a067f4e56eae6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knn_8cu.html#ae9a0e3aa52909932a78a067f4e56eae6">GPUGenie_knn_DEFAULT_DATA_PER_THREAD</a>&#160;&#160;&#160;256</td></tr>
+<tr class="separator:ae9a0e3aa52909932a78a067f4e56eae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a4efd8ef606ce4c449a7bccf4d6b84f40"><td class="memItemLeft" align="right" valign="top">__global__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knn_8cu.html#a4efd8ef606ce4c449a7bccf4d6b84f40">extract_index_and_count</a> (<a class="el" href="match_8h.html#a8c25d63718f683c5fd8e45227dc7c79b">data_t</a> *data, int *id, int *count, int size)</td></tr>
@@ -125,7 +136,64 @@ Variables</h2></td></tr>
 <div class="textblock"><p>Implementation for <a class="el" href="knn_8h.html" title="Collection of knn functions. ">knn.h</a>. </p>
 
 <p>Definition in file <a class="el" href="knn_8cu_source.html">knn.cu</a>.</p>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="afc372311e234d056a529e11018a48c7b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GPUGenie_knn_DEFAULT_BITMAP_BITS&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="knn_8cu_source.html#l00030">30</a> of file <a class="el" href="knn_8cu_source.html">knn.cu</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae9a0e3aa52909932a78a067f4e56eae6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GPUGenie_knn_DEFAULT_DATA_PER_THREAD&#160;&#160;&#160;256</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="knn_8cu_source.html#l00034">34</a> of file <a class="el" href="knn_8cu_source.html">knn.cu</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a61ac6b52f42c67f69755d14fcf997e46"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GPUGenie_knn_DEFAULT_HASH_TABLE_SIZE&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="knn_8cu_source.html#l00026">26</a> of file <a class="el" href="knn_8cu_source.html">knn.cu</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a016a7fd59c8085385dc9104166fac2af"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GPUGenie_knn_THREADS_PER_BLOCK&#160;&#160;&#160;1024</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="knn_8cu_source.html#l00022">22</a> of file <a class="el" href="knn_8cu_source.html">knn.cu</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a4efd8ef606ce4c449a7bccf4d6b84f40"></a>
 <div class="memitem">
 <div class="memproto">
@@ -162,7 +230,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="knn_8cu_source.html#l00023">23</a> of file <a class="el" href="knn_8cu_source.html">knn.cu</a>.</p>
+<p>Definition at line <a class="el" href="knn_8cu_source.html#l00038">38</a> of file <a class="el" href="knn_8cu_source.html">knn.cu</a>.</p>
 
 </div>
 </div>
