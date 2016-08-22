@@ -41,6 +41,7 @@ public:
 	struct range
 	{
 		int query;/*!< The query which the range belongs to */
+		int order;/*!< Mainly used in subsequence match */
 		int dim;/*!< The dimension which the range is on */
 		int low;/*!< The starting value of this range */
 		int up;/*!< The ending value of this range */
@@ -56,6 +57,7 @@ public:
     struct dim
     {
          int query;/*!< The query which the range belongs to */
+	 int order;/*!< Mainly used in subsequence search */
          int start_pos;/*!< The starting position in the ListArray for this dim */
          int end_pos;/*!< The ending position in the ListArray for this dim */
          float weight;/*!< Weight of this dim */
@@ -151,37 +153,40 @@ public:
 	inv_table*
 	ref_table();
 
-	/*! \fn void attr(int index, int low, int up, float weight )
+	/*! \fn void attr(int index, int low, int up, float weight, int order )
 	 *  \brief Modify the matching range and weight of an attribute.
 	 *
 	 *  \param index Attribute index
 	 *  \param low Lower bound (included)
-     *  \param up Upper bound (included)
+         *  \param up Upper bound (included)
 	 *  \param weight The weight
+	 *  \param order Used in subsequence search
 	 */
 	void
-	attr(int index, int low, int up, float weight);
-	/*! \fn void attr(int index, int value, float weight, float selectivity)
+	attr(int index, int low, int up, float weight, int order);
+	/*! \fn void attr(int index, int value, float weight, float selectivity, int order)
 	 *  \brief Set an attr struct.
 	 *
 	 *  \param index Attribute index
 	 *  \param value Value of this attr
-     *  \param weight Weight of this attr
+         *  \param weight Weight of this attr
 	 *  \param selectivity The selectivity
+	 *  \param order Used in subsequence search
 	 */
 	void
-	attr(int index, int value, float weight, float selectivity);
-	/*! \fn void attr(int index, int low,int up ,float weight, float selectivity)
+	attr(int index, int value, float weight, float selectivity, int order);
+	/*! \fn void attr(int index, int low,int up ,float weight, float selectivity, int order)
 	 *  \brief Set an attr struct
 	 *
 	 *  \param index Attribute index
 	 *  \param low Lower bound (included)
-     *  \param up Upper bound (included)
-     *  \param weight Weight of this attr
+         *  \param up Upper bound (included)
+         *  \param weight Weight of this attr
 	 *  \param selectivity The selectivity
+	 *  \param order Used in subsequence search
 	 */
 	void
-	attr(int index, int low, int up, float weight, float selectivity);
+	attr(int index, int low, int up, float weight, float selectivity, int order);
 
     /*! \fn void clear_dim(int index)
      *  \brief Delete the dim at index
@@ -284,6 +289,13 @@ public:
      */
 	int
 	count_ranges();
+
+    /*! \fn void build_sequence()
+     *  \brief build query dim for sequence search
+     *
+     */
+    void
+    build_sequence();
 };
 }
 

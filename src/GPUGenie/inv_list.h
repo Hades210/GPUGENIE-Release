@@ -7,7 +7,7 @@
 
 #include <vector>
 #include <string>
-
+#include <unordered_map>
 using namespace std;
 
 namespace GPUGenie
@@ -21,6 +21,13 @@ namespace GPUGenie
  */
 class inv_list
 {
+public:
+    /* \var vector<int> distinct_value_sequence
+     * \brief Used in sequence search to keep distinct value.
+     */
+    unordered_map<int, int> _distinct;
+
+
 private:
 	/*! \var int _size
 	 *  \brief The number of instances in the original vector.
@@ -39,6 +46,12 @@ private:
      *  Thus, inv_list is the basis of inv_table.
 	 */
 	vector<vector<int> > _inv;
+
+    /*! \var unsigned int shift_bits_subsequence
+     *  \brief It will be used to shift rowid and then add the position offset of element in that row
+     */
+    unsigned int shift_bits_subsequence;
+
 
 public:
 	/*! \fn inv_list()
@@ -63,6 +76,12 @@ public:
 	 */
 	inv_list(vector<int>* vin);
 
+    /*! \fn unsigned int _shift_bits_subsequence()
+     *
+     *  \return The shift bits used in subsequence search
+     */
+    unsigned int
+    _shift_bits_subsequence();
     /*! \fn void invert_bijectMap(vector<vector<int> > & vin)
      *  \brief invert a special kind of data,which is of one dimension
      *
@@ -89,7 +108,38 @@ public:
 	void
 	invert_bijectMap(int *data, unsigned int item_num, unsigned int *index, unsigned int row_num);
 
-	/*! \fn inv_list(vector<string>& vin)
+    /*! \fn void invert_subsequence(vector<vector<int> > & vin)
+     *  \brief This function is used for subsequence search, csv input
+     *
+     *  \param vin Sequence value of all rows
+     */
+    void
+    invert_subsequence(vector<vector<int> > & vin);
+
+
+    /*! \fn void invert_subsequence(int *data, unsigned int item_num, unsigned int * index, unsigned int row_num)
+     *  \brief This function is used for subsequence search, binary input
+     *
+     *  \param data Array storing all sequence elements
+     *  \param item_num Length of data array
+     *  \param index Stores elements pointing to starting position of each row in data array
+     *  \param row_num Length of index array
+     */
+    void
+    invert_subsequence(int *data, unsigned int item_num, unsigned int * index, unsigned int row_num);
+
+    /*! \fn void invert_sequence(vector<vector<int> > & vin)
+     *  \brief This is used for sequence match
+     *
+     *  \param vin Data to be inverted.
+     *  \param shift_bits Number of bits to shift.
+     *  \param respective_id The id for each line of vin.
+     */
+    void
+    invert_sequence(vector<vector<int> > & vin, int & shift_bits, vector<int> & respective_id);
+
+
+    /*! \fn inv_list(vector<string>& vin)
 	 *  \brief Create an inv_list from a string vector.
 	 *
 	 *  \param vin The vector which will be inverted.

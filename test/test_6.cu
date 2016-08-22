@@ -1,8 +1,8 @@
-/** Name: test_4.cu
+/** Name: test_6.cu
  * Description:
- *   focus on multiload
- *   bianry data
- *   data is from bianry file
+ * focus on serialization of table, especially under multiload setting
+ *   sift data
+ *   data is from csv file
  *   query is from csv file, single range
  *
  *
@@ -21,7 +21,7 @@ using namespace GPUGenie;
 
 int main(int argc, char* argv[])
 {
-    string dataFile = "../static/sift_20.dat";
+    string dataFile = "../static/sift_20.csv";
     string queryFile = "../static/sift_20.csv";
     vector<vector<int> > queries;
     vector<vector<int> > data;
@@ -38,29 +38,39 @@ int main(int argc, char* argv[])
     config.selectivity = 0.0f;
 
     config.query_points = &queries;
-    config.data_points = NULL;
+    config.data_points = &data;
 
     config.use_load_balance = false;
     config.posting_list_max_length = 6400;
     config.multiplier = 1.5f;
     config.use_multirange = false;
 
-    config.data_type = 1;
+    config.data_type = 0;
     config.search_type = 0;
     config.max_data_size = 10;
 
     config.num_of_queries = 3;
 
-    read_file(dataFile.c_str(), &config.data, config.item_num, &config.index, config.row_num);
+    read_file(data, dataFile.c_str(), -1);
     read_file(queries, queryFile.c_str(), config.num_of_queries);
 
-    assert(config.item_num == 100);
-    assert(config.row_num == 20);
+    unsigned int table_num;
+    preprocess_for_knn_csv(config, table);
 
-    preprocess_for_knn_binary(config, table);
+    table_num = table[0].get_total_num_of_table();
+    assert(table_num == 2);
+    assert(inv_table::write("test_table_binaryfile.dat", table));
+    delete[] table;
 
-    /**test for table*/
-    vector<int>& inv = *table[0].inv();
+    inv_table* _table;
+    assert(inv_table::read("test_table_binaryfile.dat", _table));
+
+    
+
+    table_num = _table[0].get_total_num_of_table();
+    assert(table_num == 2);
+    
+    vector<int>& inv = *_table[0].inv();
     assert(inv[0] == 8);
     assert(inv[1] == 9);
     assert(inv[2] == 7);
@@ -70,7 +80,7 @@ int main(int argc, char* argv[])
 
     vector<int> result;
     vector<int> result_count;
-    knn_search_after_preprocess(config, table, result, result_count);
+    knn_search_after_preprocess(config, _table, result, result_count);
 
     reset_device();
     assert(result[0] == 0);
@@ -84,6 +94,6 @@ int main(int argc, char* argv[])
     
     assert(result[10] == 2);
     assert(result_count[10] == 5);
-    delete[] table;
+    delete[] _table;
     return 0;
 }

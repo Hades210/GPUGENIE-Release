@@ -23,11 +23,11 @@ int main(int argc, char * argv[])//for ide: from main to main4
 	Logger::set_level(Logger::DEBUG);
 	std::vector<std::vector<int> > queries;
 	std::vector<attr_t> multirange_queries;
-	std::vector<std::vector<int> > data;
+	//std::vector<std::vector<int> > data;
 	inv_table table;
     GPUGenie::GPUGenie_Config config;
 
-	string  dataFile = "tweets_4k.csv";//for ide: from "sift_1k.csv" to "example/sift_1k.csv"
+	string  dataFile = "tweets_4k.dat";//for ide: from "sift_1k.csv" to "example/sift_1k.csv"
     string  queryFile= "tweets_4k.csv";
 
 	//Data dimension
@@ -54,7 +54,7 @@ int main(int argc, char * argv[])//for ide: from main to main4
 	//if config.hashtable_size>2, the hashtable_size means the size of the hashtable,
 			//this is useful when using adaptiveThreshold (i.e. config.count_threshold <0), where the
 			//hash_table size is usually set as: maximum_countXconfig.num_of_topkx1.5 (where 1.5 is load factor for hashtable).
-	config.hashtable_size = 100*config.num_of_topk*1.5;//960
+	config.hashtable_size = 14*config.num_of_topk*1.5;//960
 
 	//Query radius from the data point bucket expanding to upward and downward.
 		//For tweets data, set it as 0, which means exact match
@@ -69,23 +69,22 @@ int main(int argc, char * argv[])//for ide: from main to main4
 	config.selectivity = 0.0f;
 
 	config.query_points = &queries;
-	config.data_points = &data;
 
 	//if use_load_balance=false, config.multiplier and config.posting_list_max_length are not useful
 	config.use_load_balance = true;
 	//maximum number per posting list, if a keyword has a long posting list, we break it into sublists, and this parameter defines the maximum length of sub-list
-	config.posting_list_max_length = 256;
+	config.posting_list_max_length = 64000;
 	config.multiplier = 1.5f;//config.multiplier*config.posting_list_max_length is  maximum number of elements processed by one block
 
 	config.use_multirange = false;
 
-    config.data_type = 0;
+    config.data_type = 1;
     config.search_type = 1;
-    config.max_data_size =400 ;
+    config.max_data_size = 0;
 
     config.num_of_queries = 10;
 
-    read_file(data, dataFile.c_str(), -1);//for AT: for adaptiveThreshold
+    read_file(dataFile.c_str(), &config.data, config.item_num, &config.index, config.row_num);
 	if(config.use_multirange)
 	{
 		read_query(multirange_queries, queryFile.c_str(), -1);
@@ -103,13 +102,33 @@ int main(int argc, char * argv[])//for ide: from main to main4
 	*
 	*/
 
+    //example of writing and reading operations
+    inv_table * __table = NULL;
+    preprocess_for_knn_binary(config, __table);
 
+    u64 s1 = getTime();
+    inv_table::write("table.dat", __table);
+    u64 e1 = getTime();
+
+    double time1 = getInterval(s1, e1);
+    cout<<"time1 = "<<time1<<endl;
+    delete[] __table;
+  
+  //  unsigned int table_num = 1;
+    inv_table * _table = NULL;
+    u64 s2 = getTime();
+    inv_table::read("table.dat", _table);
+    u64 e2 = getTime();
+
+    double time2 = getInterval(s2, e2);
+    cout<<"time2 = "<<time2<<endl;
 	std::vector<int> result, result_count;
 
 	Logger::log(Logger::INFO, " example_sift Launching knn functions...");
 
 	u64 start = getTime();
-	GPUGenie::knn_search(result, result_count, config);
+	//GPUGenie::knn_search(result, result_count, config);
+    knn_search_after_preprocess(config, _table, result, result_count);
 	u64 end = getTime();
 	double elapsed = getInterval(start, end);
 
@@ -128,6 +147,9 @@ int main(int argc, char * argv[])//for ide: from main to main4
 	}
 
 	Logger::exit();
+    
+    free(config.data);
+    free(config.index);
 
     return 0;
 }

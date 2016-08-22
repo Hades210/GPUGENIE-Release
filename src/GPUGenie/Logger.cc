@@ -5,11 +5,12 @@
 #include "Logger.h"
 #include <stdarg.h>
 #include <string.h>
+#include <sstream>
 #include <sys/time.h>
 #include <ctime>
-#include <sstream>
 #include <sys/stat.h>
 #include <sys/types.h>
+
 #include "Timing.h"
 using namespace std;
 const char * const Logger::LEVEL_NAMES[] =

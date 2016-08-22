@@ -49,7 +49,7 @@ int main(int argc, char * argv[])
 	//It is implemented as a bitmap filter.
 	//Set to 0 to disable the feature.
 	//set to <0, to use adaptiveThreshold, the absolute value of count_threshold is the maximum possible count sotred in the bitmap
-	config.count_threshold = -config.dim;
+	config.count_threshold = -128;
 
 	//Number of topk items to select for each query.
 	config.num_of_topk = 10;
@@ -62,8 +62,8 @@ int main(int argc, char * argv[])
 	//if config.hashtable_size>2, the hashtable_size means the size of the hashtable,
 		//this is useful when using adaptiveThreshold (i.e. config.count_threshold <0), where the
 		//hash_table size is usually set as: maximum_countXconfig.num_of_topkx1.5 (where 1.5 is load factor for hashtable).
-
-    config.hashtable_size = config.dim*config.num_of_topk*1.5;//354
+	//config.hashtable_size = 128*config.num_of_topk*1.5;//960
+    config.hashtable_size = 128*config.num_of_topk*1.5;//354
 
 
 
@@ -97,9 +97,11 @@ int main(int argc, char * argv[])
 	config.posting_list_max_length = 256;
 	config.use_load_balance = true;
 	config.use_multirange = true;
+    config.save_to_gpu = false;
     //below are new configurations
     config.data_type = 0;
     config.search_type = 0;
+    config.max_data_size = 0;
 
 	read_file(data, dataFile.c_str(), -1);//for AT: for adaptiveThreshold
 	if(config.use_multirange)
@@ -164,7 +166,6 @@ int main(int argc, char * argv[])
     GPUGenie::reset_device();
 	Logger::log(Logger::VERBOSE, ">>>>>>> [time profiling]: Total Time Elapsed: %fms. <<<<<<<", elapsed);
 	for(int i = 0; i < config.num_of_queries & i < 5; ++i)
-
 	{
 		printf("Query %d result is: \n\t", i);
 		for (int j = 0; j < config.num_of_topk && j < 10; ++j)

@@ -13,7 +13,9 @@
 #include "match.h"
 #include "genie_errors.h"
 #include "heap_count.h"
-#include "GPUGenie.h"
+
+#define THREADS_PER_BLOCK 256
+#define GPUGenie_Minus_One_THREADS_PER_BLOCK 1024
 
 using namespace std;
 
@@ -174,18 +176,51 @@ void GPUGenie::heap_count_topk(thrust::device_vector<data_t>& d_data,
 			cudaMemset((void* ) d_num_over_threshold_p, 0,
 					sizeof(int) * threads * num_of_queries));
 
+	//DEBUG
+
+	//write_hashtable_to_file(d_data, num_of_queries);
+
+//	thrust::host_vector<u32> h_threshold_b(d_threshold);
+//	printf("Thresholds before minus one transforms:\n");
+//	for(int i = 0; i < h_threshold_b.size(); ++i){
+//		printf("%d ", h_threshold_b[i]);
+//	}
+//	printf("\n");
+	//End DEBUG
 
 	d_threshold_p = thrust::raw_pointer_cast(d_threshold.data());
 	transform_threshold<<<d_threshold.size() / GPUGenie_Minus_One_THREADS_PER_BLOCK + 1,
 			GPUGenie_Minus_One_THREADS_PER_BLOCK>>>(d_threshold_p,
 			d_threshold.size(), max_count);
-
+	//DEBUG
+//	thrust::host_vector<u32> h_threshold_af(d_threshold);
+//	printf("Thresholds after minus one transforms:\n");
+//	for(int i = 0; i < h_threshold_af.size(); ++i){
+//		printf("%d ", h_threshold_af[i]);
+//	}
+//	printf("\n");
+	//End DEBUG
 
 	d_data_p = thrust::raw_pointer_cast(d_data.data());
 
 	count_over_threshold<<<num_of_queries, threads>>>(d_data_p,
 			d_num_over_threshold_p, d_threshold_p, data_size);
 
+	//Debugging
+//	int *h_result;
+//	h_result = (int*) malloc(sizeof(int) * threads * num_of_queries);
+//	cudaMemcpy((void*) h_result, d_num_over_threshold_p,
+//			sizeof(int) * threads * num_of_queries, cudaMemcpyDeviceToHost);
+
+//	for (int i = 0; i < num_of_queries; ++i)
+//	{
+//		for (int j = 0; j < threads && j < 15; ++j)
+//		{
+//			printf("%d ", h_result[i * threads + j]);
+//		}
+//		printf("\n");
+//	}
+//	printf("-----------------------------------\n");
 
 	int * d_buffer, *d_scan_indices;
 	cudaCheckErrors(cudaMalloc((void**) &d_buffer, 2 * sizeof(int) * threads * num_of_queries));
@@ -196,7 +231,22 @@ void GPUGenie::heap_count_topk(thrust::device_vector<data_t>& d_data,
 	exclusive_scan<<<num_of_queries, threads>>>(d_num_over_threshold_p,
 			d_buffer, d_scan_indices, threads);
 
+	//Debugging
+//	free(h_result);
+//	h_result = (int*) malloc(sizeof(int) * (threads + 1) * num_of_queries);
+//	cudaMemcpy((void*) h_result, d_scan_indices,
+//			sizeof(int) * (threads + 1) * num_of_queries,
+//			cudaMemcpyDeviceToHost);
 
+//	for (int i = 0; i < num_of_queries; ++i)
+//	{
+//		for (int j = 0; j < threads + 1 && j < 16; ++j)
+//		{
+//			printf("%d ", h_result[i * (threads + 1) + j]);
+//		}
+//		printf("\n");
+//	}
+//	printf("-----------------------------------\n");
 
 	d_topk.resize(topk * num_of_queries);
 	data_t empty_data ={ 0, 0 };
@@ -206,7 +256,21 @@ void GPUGenie::heap_count_topk(thrust::device_vector<data_t>& d_data,
 	fill_in_scan<<<num_of_queries, threads, 2 * sizeof(int)>>>(d_data_p,
 			d_threshold_p, d_scan_indices, d_topk_p, data_size, topk);
 
+//	data_t * h_topk_result;
+//	h_topk_result = (data_t*) malloc(sizeof(data_t) * topk * num_of_queries);
+//	cudaMemcpy((void*) h_topk_result, d_topk_p,
+//			sizeof(data_t) * topk * num_of_queries, cudaMemcpyDeviceToHost);
 
+//	for (int i = 0; i < num_of_queries; ++i)
+//	{
+//		for (int j = 0; j < topk && j < 10; ++j)
+//		{
+//			printf("%d ", int(h_topk_result[i * topk + j].aggregation));
+//		}
+//		printf("\n");
+//	}
+//	printf("-----------------------------------\n");
+//	printf("Number of threads per block launched: %d.\n", threads);
 
 	cudaCheckErrors(cudaFree(d_num_over_threshold_p));
 	cudaCheckErrors(cudaFree(d_buffer));

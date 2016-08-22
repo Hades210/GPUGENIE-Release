@@ -1,6 +1,7 @@
 /** Name: test_5.cu
  * Description:
- *   tweet data(short text)
+ * focus on save_to_gpu function
+ *   sift data
  *   data is from csv file
  *   query is from csv file, single range
  *
@@ -20,17 +21,17 @@ using namespace GPUGenie;
 
 int main(int argc, char* argv[])
 {
-    string dataFile = "../static/tweets_20.csv";
-    string queryFile = "../static/tweets_20.csv";
+    string dataFile = "../static/sift_20.csv";
+    string queryFile = "../static/sift_20.csv";
     vector<vector<int> > queries;
     vector<vector<int> > data;
     inv_table * table = NULL;
     GPUGenie_Config config;
 
-    config.dim = 14;
+    config.dim = 5;
     config.count_threshold = 14;
     config.num_of_topk = 5;
-    config.hashtable_size = 100*config.num_of_topk*1.5;
+    config.hashtable_size = 14*config.num_of_topk*1.5;
     config.query_radius = 0;
     config.use_device = 0;
     config.use_adaptive_range = false;
@@ -45,9 +46,11 @@ int main(int argc, char* argv[])
     config.use_multirange = false;
 
     config.data_type = 0;
-    config.search_type = 1;
-
+    config.search_type = 0;
+    config.max_data_size = 0;
     config.num_of_queries = 3;
+
+    config.save_to_gpu = true;
 
     read_file(data, dataFile.c_str(), -1);
     read_file(queries, queryFile.c_str(), config.num_of_queries);
@@ -56,27 +59,44 @@ int main(int argc, char* argv[])
 
     /**test for table*/
     vector<int>& inv = *table[0].inv();
-
-    assert(inv[0] == 0);
-    assert(inv[1] == 11);
-    assert(inv[2] == 0);
-    assert(inv[3] == 11);
-    assert(inv[4] == 0);
-    assert(inv[5] == 11);
+    assert(inv[0] == 8);
+    assert(inv[1] == 9);
+    assert(inv[2] == 7);
+    assert(inv[3] == 0);
+    assert(inv[4] == 2);
+    assert(inv[5] == 4);
 
     vector<int> result;
     vector<int> result_count;
     knn_search_after_preprocess(config, table, result, result_count);
 
-    reset_device();
-    assert(result[0] == 0 || result[0] == 11);
-    assert(result_count[0] == 16);
-    //assert(result_count[1] == 16);
+    assert(result[0] == 0);
+    assert(result_count[0] == 5);
+
+    assert(result[1] == 4);
+    assert(result_count[1] == 2);
+
     assert(result[5] == 1);
-    assert(result_count[5] == 14);
+    assert(result_count[5] == 5);
     
     assert(result[10] == 2);
-    assert(result_count[10] == 16);
+    assert(result_count[10] == 5);
+
+    int i_size = inv.size();
+    int* _inv = (int*)malloc(sizeof(int)*i_size);
+    cudaCheckErrors(cudaMemcpy(_inv, table[0].d_inv_p, sizeof(int)*i_size, cudaMemcpyDeviceToHost));
+    table[0].clear_gpu_mem();
+
+    assert(_inv[0] == 8);
+    assert(_inv[1] == 9);
+    assert(_inv[2] == 7);
+    assert(_inv[3] == 0);
+    assert(_inv[4] == 2);
+    assert(_inv[5] == 4);
+
+    reset_device();
+    free(_inv);
+
     delete[] table;
     return 0;
 }

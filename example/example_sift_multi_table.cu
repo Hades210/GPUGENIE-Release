@@ -18,12 +18,10 @@ using namespace std;
 
 int main(int argc, char * argv[])
 {
-	Logger::set_level(Logger::DEBUG);
 	std::vector<std::vector<int> > queries;
-	std::vector<attr_t> multirange_queries;
 	std::vector<std::vector<int> > data;
-	inv_table table;
-    GPUGenie::GPUGenie_Config config;
+	//inv_table table;
+
 	//Reading file from the disk. Alternatively, one can simply use vectors generated from other functions
 	//Example vectors:
 	//Properties: 10 points, 5 dimensions, value range 0-255, -1 for excluded dimensions.
@@ -33,14 +31,17 @@ int main(int argc, char * argv[])
 	//|...  |... |... |... |... |... |
 	//|9	|0   |50  |253 |1   |164 |
 
-	string  dataFile = "sift_1k.dat";//for ide: from "sift_1k.csv" to "example/sift_1k.csv"
-    string  queryFile= "sift_1k_query.csv";
+	int queryNum = 10;
+	string  dataFile = "sift_1k.csv";//for ide: from "sift_1k.csv" to "example/sift_1k.csv"
+       
 
+	read_file(data, dataFile.c_str(), -1);//for AT: for adaptiveThreshold
+	//read queries from file, which has the same format 
+	read_file(queries, dataFile.c_str(), queryNum);
+	
 
 	/*** Configuration of KNN Search ***/
-	//GPUGenie::GPUGenie_Config config;
-
-    config.num_of_queries = 10;
+	GPUGenie::GPUGenie_Config config;
 
 	//Data dimension
 	config.dim = 128;
@@ -53,7 +54,7 @@ int main(int argc, char * argv[])
 
 	//Number of topk items desired for each query.
 	//Some queries may result in fewer than desired topk items.
-	config.num_of_topk = 10;
+	config.num_of_topk = 100;
 
 	//if config.hashtable_size<=2, the hashtable_size means ratio against data size
 		//Hash Table size is set as: config.hashtable_size (i.e.) ratio X data size.
@@ -85,32 +86,16 @@ int main(int argc, char * argv[])
 
 	config.selectivity = 0.2f;
 
-	
+
 	//The pointer to the vector containing the data.
-	//config.data_points = &_data;
+	config.data_points = &data;
 
 	//The pointer to the vector containing the queries.
 	config.query_points = &queries;
 
 	config.multiplier = 1.5f;
 	config.posting_list_max_length = 6400;
-	config.use_load_balance = true;
-	config.use_multirange = true;
-
-    //below are new configurations
-    config.data_type = 1;
-    config.search_type = 0;
-    config.max_data_size = 500;
-
-    read_file(dataFile.c_str(), &config.data, config.item_num, &config.index, config.row_num);
-	if(config.use_multirange)
-	{
-		read_query(multirange_queries, queryFile.c_str(), -1);
-		config.multirange_query_points = &multirange_queries;
-	} else {
-		read_file(queries, queryFile.c_str(), config.num_of_queries);
-		config.query_points = &queries;
-	}
+	config.use_load_balance = false;
 	/*** End of Configuration ***/
 
 	/*** NOTE TO DEVELOPERS ***/
@@ -151,31 +136,41 @@ int main(int argc, char * argv[])
 	                          */
 	/*** END OF NOTE ***/
 
+	std::vector<std::vector<int> > result;
+    result.resize(5);
+    GPUGenie::inv_table table[5];
 
-	std::vector<int> result, result_count;
+    for(int i=0; i<5; ++i)
+    {
+        GPUGenie::load_table(table[i], *(config.data_points), config.posting_list_max_length,true);
+        cout<<"~~~~~~~~~~~~~this is table~~~~"<<endl;
+    }
 
-	Logger::log(Logger::INFO, " example_sift Launching knn functions...");
-
-	u64 start = getTime();
-	GPUGenie::knn_search(result,result_count, config);
-	u64 end = getTime();
-	double elapsed = getInterval(start, end);
+	printf("Launching knn functions...\n");
+//	u64 start = getTime();
+	for(int i=0;i<5;++i)
+    {
+    //GPUGenie::knn_search(result, config);
+        cout<<"~~~~~~~~~~~~~~~~~this is i   "<<i<<endl;
+	    std::vector<query> queries;
+        GPUGenie::load_query(table[i], queries, config);
+        GPUGenie::knn_search(table[i], queries, result[i],config);
+    }
+  //  u64 end = getTime();
+//	double elapsed = getInterval(start, end);
+//	printf(">>>>>>> [time profiling]: Total Time Elapsed: %fms. <<<<<<<\n", elapsed);
 
     GPUGenie::reset_device();
-	Logger::log(Logger::VERBOSE, ">>>>>>> [time profiling]: Total Time Elapsed: %fms. <<<<<<<", elapsed);
-
-	for(int i = 0; i < 5; ++i)
-	{
-		printf("Query %d result is: \n\t", i);
-		for (int j = 0; j < 10; ++j)
-		{
-			printf("%d:%d, ", result[i * config.num_of_topk + j], result_count[i * config.num_of_topk + j]);
-		}
-		printf("\n");
-	}
-
-	Logger::exit();
-	free(config.data);
-	free(config.index);
+    for(int z=0; z<5; ++z){
+	    for(int i = 0; i < 5; ++i)
+	    {
+		    printf("Query %d result is: \n\t", i);
+		    for (int j = 0; j < 5; ++j)
+		    {
+			    printf("%d, ", result[z][i * config.num_of_topk + j]);
+		    }
+		        printf("\n");
+	    }
+    }
 	return 0;
 }
