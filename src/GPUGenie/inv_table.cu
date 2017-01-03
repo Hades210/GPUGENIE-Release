@@ -346,6 +346,7 @@ GPUGenie::inv_table::write_to_file(ofstream& ofs)
     if(_build_status == not_builded)
         return false;
 
+
     ofs.write((char*)&table_index, sizeof(int));
     ofs.write((char*)&total_num_of_table, sizeof(int));
     ofs.write((char*)&_shifter, sizeof(int));
@@ -486,9 +487,13 @@ GPUGenie::inv_table::read_from_file(ifstream& ifs)
             ia>>_distinct_map[i];
         }
     }
+
+
     if(table_index == total_num_of_table-1)
         ifs.close();
     
+
+
     return true;
 }
 
@@ -538,6 +543,9 @@ GPUGenie::inv_table::read(const char* filename, inv_table*& table)
     for(int i=0 ; i<_total_num_of_table ; ++i)
     {
          success = table[i].read_from_file(_ifs);
+         if(success && (int)table[i].inv()->size() > inv_table::max_inv_size)
+             inv_table::max_inv_size = (int)table[i].inv()->size();
+            
     }
     return !_ifs.is_open() && success;
 }
